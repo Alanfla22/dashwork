@@ -69,7 +69,7 @@ export function filtrarForm (filtros, inputs) {
 
             data.forEach((item) => {
                 
-                item.Data = item["Data de Cria��o"];
+                item.Data = item["Data de Cria��o"].replaceAll("/", "-");
                 item.Nome = item["Nome Cliente"];
                 item.Tarefa = item["Situa��o"];
                 item.Tipo = item["Tipo IC"];

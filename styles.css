@@ -1,205 +1,199 @@
-/* Go from zero to full opacity */
-@keyframes fadeEffect {
-  from {opacity: 0;}
-  to {opacity: 1;}
+/* Configurações Globais e Variáveis */
+:root {
+    --primary-color: #3b82f6;
+    --bg-dark: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --accent: #10b981;
+    --border: #334155;
 }
 
-html, body {
-  height: 100%; /* Ensures the html element takes full height of the viewport */
-  margin: 0; /* Removes default browser margin */
-  padding: 0; /* Removes default browser padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  
-  overflow: hidden;
-  min-height: 100vh;
-  /* Ensures the body element is at least 100% of the viewport height */
-  /* You can also use height: 100vh; if you want the body to strictly adhere to the viewport height,
-     but min-height: 100vh; is often preferred to allow content to expand beyond the viewport if needed. */
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Navbar Moderna */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-card);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Formulário e Filtros */
+.testForm {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
 
 fieldset {
-  margin: 2px;
-  padding: 0;
-  border-width: 0;
-  
+    border: none;
+}
+
+.dropbtn {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dropbtn:hover {
+    border-color: var(--primary-color);
 }
 
 .submit {
-  background-color: hsl(120 100 25);
-  color: white;
-  cursor: pointer;
-  margin: 2px;
-  padding: 14px 50px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.2s;
 }
 
 .submit:hover {
-  animation: fadeEffect 0.5s;
-  color: black;
-  background-color: hsl(120 100 85);
+    filter: brightness(1.2);
 }
 
-tr:hover {
-  animation: fadeEffect 0.5s;
+/* Upload de Arquivos */
+.myfile {
+    font-size: 0.8rem;
+    color: var(--text-dim);
 }
 
-rect:hover {
-  animation: fadeEffect 0.5s;
-  cursor: pointer;
+/* Tabs Estilizadas */
+.tab {
+    display: flex;
+    background: var(--bg-dark);
+    padding: 4px;
+    border-radius: 8px;
 }
 
-path:hover {
-  animation: fadeEffect 0.5s;
-  cursor: pointer;
+.tablinks {
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* The dropdown container */
-.dropdown {
-  float: left;
-  overflow: hidden;
+.tablinks:hover {
+    color: white;
 }
 
-.selector {
-  cursor: pointer;
+.tablinks.active {
+    background: var(--primary-color);
+    color: white;
 }
 
-option {
-  cursor: pointer;
-}
-
-
-
-/* Dropdown button */
-.dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: black;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
-}
-
-.navbar {
-  padding: 0 14px;
-  background-color: black;
-
-}
-/* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
-  animation: fadeEffect 0.5s;
-  color: black;
-  background-color: hsl(196 70 88);
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  float: none;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-thead {
-  position: sticky;
-  top: 0;
-  background-color: hsl(196 70 28);
-  color: white;
-}
-
+/* Layout Principal (Dashboard) */
 .wrapper {
-  padding: 0 14px;
-  height: 800px;
-  display: grid;
-  grid-template-columns: 2fr 1.5fr;
-  grid-template-areas:
-    "navbar   navbar"
-    "graficos tabela";
-
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;;
-  grid-area: navbar;
-}
-.testForm {
-  display: flex;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .graficos {
-
-  grid-area: graficos;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .graficos_1, .graficos_2 {
-  display: flex;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 1.5rem;
 }
 
+/* Containers de SVG */
+.graficos_1 > div, .graficos_2 > div {
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
 
+svg {
+    max-width: 100%;
+    height: auto !important; /* Permite responsividade do D3 */
+}
+
+/* Seletores de Gráfico */
+.selector {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+/* Tabela de Dados */
 .tabela {
-
-  height: 800px;
-  display: flex;
-  grid-area: tabela;
-  overflow: scroll;
-
+    margin-top: 3rem;
+    overflow-x: auto;
 }
 
-.mytable {
-  overflow: scroll;
+#mytable {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-/* Style the buttons that are used to open the tab content */
-.tab button {
-  background-color: hsl(196 70 28);
-  color: white;
-  margin: 2px;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 50px;
-
+#mytable th, #mytable td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
 }
 
-/* Change background color of buttons on hover */
-.tab button:hover {
-  animation: fadeEffect 0.5s;
-  background-color: hsl(196 70 88);
-  color: black;
+#mytable th {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
 }
 
-/* Create an active/current tablink class */
-.tab button.active {
-  background-color: grey;
+#mytable tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
+    .testForm {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
+    .graficos_1, .graficos_2 {
+        grid-template-columns: 1fr;
+    }
+}

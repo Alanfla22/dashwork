@@ -68,6 +68,7 @@ export function pieSvg (dados, option) {
         .attr('x', 32)
         .attr('y', (d,i) => (i * 35) - 110)
         .attr('font-size', 13)
+        .attr('fill', "white") 
         .text(d =>  `${d.data[0]}`);  
         
         

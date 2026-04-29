@@ -2,7 +2,7 @@
 import {filtrarTableApd} from "./filtrarTableApd.js";
 
 const xSize = 500;
-const ySize = 300;
+const ySize = 345;
 const margin = 40;        
 const xMax = xSize - margin*2;
 const yMax = ySize - margin*2;        

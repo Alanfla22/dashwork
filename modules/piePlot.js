@@ -2,7 +2,7 @@ import {filtrarTable} from "./filtrarTable.js";
 
 
 const xSize = 500;
-const ySize = 400;
+const ySize = 350;
 const margin = 40;        
 const xMax = xSize - margin*2;
 const yMax = ySize - margin*2;

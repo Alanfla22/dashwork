@@ -28,7 +28,7 @@ export function histogramApdSvg (dados) {
     .attr("y", -10)
     .attr("font-size", 30)
     .text(`Estoque APD: ${dados.length}` )
-    .attr('fill', "hsl(196 70 28)");    
+    .attr('fill', "white");    
 
     // X Axis
     const xScale = d3.scaleBand()

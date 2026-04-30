@@ -208,7 +208,7 @@ svg {
 
 }
 
-.mytable thead {
+#mytable thead {
     position: sticky;
     top: 0;
     background: var(--bg-card);

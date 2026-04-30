@@ -99,7 +99,7 @@ fieldset {
 }
 
 .submit {
-    background-color: var(--primary-color);
+    background-color: hsl(196 70 28);
     color: white;
     border: none;
     padding: 8px 20px;

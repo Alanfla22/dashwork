@@ -25,8 +25,8 @@ export function tabulate(dados) {
     var rows = tbody.selectAll("tr")
     .data(dados)
     .enter()
-    .append("tr")
-    .style("background-color", "grey");
+    .append("tr");
+
 
     // cell i each row
 

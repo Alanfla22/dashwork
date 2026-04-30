@@ -221,7 +221,7 @@ svg {
 }
 
 #mytable th {
-    background-color: var(--bg-card);
+    background-color: var(--bg-dark);
     color: var(--primary-color);
     font-weight: 600;
 }

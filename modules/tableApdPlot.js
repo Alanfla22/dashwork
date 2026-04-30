@@ -24,7 +24,8 @@ export function tabulateApd(dados) {
     var rows = tbody.selectAll("tr")
     .data(dados)
     .enter()
-    .append("tr");
+    .append("tr")
+    .style("background-color", "hsl(217 33 17)");
 
 
     // cell i each row
@@ -42,7 +43,7 @@ export function tabulateApd(dados) {
      
             })
     .on("mouseout", function () {
-                d3.select(this.parentNode).style("background-color", "grey");  
+                d3.select(this.parentNode).style("background-color", "hsl(217 33 17)");  
 
             })
     .text(d => d.value);

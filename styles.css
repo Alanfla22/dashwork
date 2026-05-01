@@ -194,6 +194,10 @@ svg {
     margin-bottom: 10px;
 }
 
+.selector:hover {
+    border-color: var(--primary-color);
+}
+
 /* Tabela de Dados */
 .tabela {
     height: 100%;

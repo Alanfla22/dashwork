@@ -204,7 +204,7 @@ svg {
     overflow-y: scroll;
 }
 
-.mytable {
+#mytable {
     width: 100%;
     border-collapse: collapse;
     background: var(--bg-card);

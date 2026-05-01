@@ -28,8 +28,8 @@ export function histogramSvg (dados) {
     .attr("x", 2)
     .attr("y", -10)
     .attr("font-size", 30)
-    .text("Estoque S522")
-    .attr('fill', "white");
+    .text("S522")
+    .attr('fill', "hsl(196 70 88)");
 
     svg.append("g")
     .append("text")    

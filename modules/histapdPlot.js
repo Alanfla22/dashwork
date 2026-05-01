@@ -27,8 +27,8 @@ export function histogramApdSvg (dados) {
     .attr("x", 2)
     .attr("y", -10)
     .attr("font-size", 30)
-    .text("Estoque APD" )
-    .attr('fill', "white");
+    .text("APD" )
+    .attr('fill', "hsl(196 70 88)");
 
     svg.append("g")
     .append("text")    

@@ -215,7 +215,7 @@ svg {
 #mytable thead {
     position: sticky;
     top: 0;
-    background: var(--bg-card);
+    background: hsl(196 70 28);
 }
 
 #mytable th, #mytable td {

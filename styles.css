@@ -222,7 +222,7 @@ svg {
 
 #mytable th {
     background-color: var(--bg-dark);
-    color: var(--text-dim);
+    color: hsl(196 70 88);
     font-weight: 600;
 }
 

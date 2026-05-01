@@ -215,6 +215,7 @@ svg {
 #mytable thead {
     position: sticky;
     top: 0;
+    border-radius: 12px;
     background: hsl(196 70 28);
 }
 

@@ -202,6 +202,7 @@ svg {
 .tabela {
     height: 100%;
     overflow-y: scroll;
+    border-radius: 12px;
 }
 
 #mytable {

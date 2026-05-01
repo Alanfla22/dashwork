@@ -76,8 +76,6 @@ export function pieapdSvg (dados, option) {
         .append("path")        
         .attr("d", arc)
         .attr("fill", d => color(d.data[0]))
-        .attr("stroke", "white")
-        .attr("stroke-width", 3)
         .on("mouseover", function () {
             d3.select(this).attr("fill", "hsl(196 70 88)");
         

@@ -25,7 +25,8 @@ export function tabulateApd(dados) {
     .data(dados)
     .enter()
     .append("tr")
-    .style("background-color", "hsl(217 33 17)");
+    .style("background-color", "hsl(217 33 17)")
+    .style("transition", "0.3s");
 
 
     // cell i each row

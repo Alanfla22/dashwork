@@ -75,7 +75,6 @@ export function histogramSvg (dados) {
     .attr("fill", "hsl(196 70 28)")
     .style("transition", "0.3s")
     .call(enter => enter.transition()
-        .duration(750)
         .attr("y", d => yScale(d[1].length))
         .attr("height", d => yMax - yScale(d[1].length)
         )

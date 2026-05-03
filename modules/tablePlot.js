@@ -26,7 +26,8 @@ export function tabulate(dados) {
     .data(dados)
     .enter()
     .append("tr")
-    .style("background-color", "hsl(217 33 17)");
+    .style("background-color", "hsl(217 33 17)")
+    .style("transition", "0.3s");
 
 
     // cell i each row
@@ -41,6 +42,8 @@ export function tabulate(dados) {
     .append("td")
     .on("mouseover", function () {
                 d3.select(this.parentNode).style("background-color", "hsl(196 70 88)");
+                
+                                                
      
             })
     .on("mouseout", function () {

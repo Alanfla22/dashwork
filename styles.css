@@ -111,7 +111,7 @@ fieldset {
 }
 
 .submit:hover {
-    filter: brightness(1.2);
+    filter: brightness(1.4);
 }
 
 /* Upload de Arquivos */
@@ -140,6 +140,7 @@ fieldset {
 
 .tablinks:hover {
     color: white;
+    filter: brightness(1.4);
 }
 
 .tablinks.active {

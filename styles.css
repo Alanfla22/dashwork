@@ -96,6 +96,7 @@ fieldset {
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .submit {
@@ -193,6 +194,7 @@ svg {
     border-radius: 4px;
     margin-bottom: 10px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .selector:hover {

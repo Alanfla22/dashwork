@@ -49,6 +49,7 @@ export function pieSvg (dados, option) {
         .attr("width", 30)
         .attr("height", 30)
         .attr("fill", d => color(d.data[0]))
+        .style("transition", "0.3s")
         .on("mouseover", function () {
             d3.select(this).attr("fill", "hsl(196 70 88)");
               
@@ -81,6 +82,7 @@ export function pieSvg (dados, option) {
         .append("path")        
         .attr("d", arc)
         .attr("fill", d => color(d.data[0]))
+        .style("transition", "0.3s")
         .on("mouseover", function () {
             d3.select(this).attr("fill", "hsl(196 70 88)");
               

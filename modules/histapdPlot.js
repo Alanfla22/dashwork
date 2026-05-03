@@ -72,7 +72,7 @@ export function histogramApdSvg (dados) {
     .attr("width", xScale.bandwidth())
     .attr("height", 0)
     .attr("fill", "hsl(196 70 28)")
-    .style("transition", "0.3s");    
+    .style("transition", "0.3s")   
     .call(enter => enter.transition()
         .duration(750)
         .attr("y", d => yScale(d[1].length))

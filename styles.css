@@ -96,6 +96,7 @@ fieldset {
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 10px;
+    cursor: pointer;
 
 }
 
@@ -194,6 +195,7 @@ svg {
     padding: 5px;
     border-radius: 4px;
     margin-bottom: 10px;
+    cursor: pointer;
     transition: 0.3s;
 
 }

@@ -73,7 +73,7 @@ export function histogramSvg (dados) {
     .attr("width", xScale.bandwidth())
     .attr("height", 0)
     .attr("fill", "hsl(196 70 28)")
-    .style("cursor" "pointer")
+    .style("cursor", "pointer")
     .style("transition", "0.3s")
     .call(enter => enter.transition()
         .attr("y", d => yScale(d[1].length))

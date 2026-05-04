@@ -13,9 +13,9 @@ export function histogramSvg (dados) {
     
     plotHist.selectAll("g").remove();
     
-    dados.sort((a, b) => new Date(a.Data) - new Date(b.Data));
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
+    dadosHist.sort((a, b) => new Date(parseInt(a[0].split("/")[2]), parseInt(a[0].split("/")[1]), parseInt(a[0].split("/")[0])) - new Date(parseInt(b[0].split("/")[2]), parseInt(b[0].split("/")[1]), parseInt(b[0].split("/")[0])));
 
     const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
 

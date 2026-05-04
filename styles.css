@@ -117,6 +117,7 @@ fieldset {
 
 /* Upload de Arquivos */
 .myfile {
+    cursor: pointer;
     font-size: 0.8rem;
     color: var(--text-dim);
 }

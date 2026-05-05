@@ -227,6 +227,7 @@ svg {
     position: sticky;
     top: 0;
     border-radius: 12px;
+    border: 1px solid var(--border);
     background: hsl(196 70 28);
 }
 
@@ -238,8 +239,7 @@ svg {
 
 #mytable th {
     background-color: hsl(196 70 28);
-    color: hsl(196 70 88);
-    border: 1px solid var(--border);
+    color: hsl(196 70 88);    
     font-weight: 600;
 }
 

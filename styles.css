@@ -242,7 +242,6 @@ svg {
 
 #mytable tr:hover {
     background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border);
     color: var(--bg-card);
 }
 

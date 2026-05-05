@@ -209,13 +209,13 @@ svg {
 .tabela {
     height: 100%;
     overflow-y: scroll;
+    border: 1px solid var(--border);
     border-radius: 12px;
 }
 
 #mytable {
     width: 100%;
-    border-collapse: collapse;
-    border: 1px solid var(--border);
+    border-collapse: collapse;    
     background: var(--bg-card);
     border-radius: 8px;
 

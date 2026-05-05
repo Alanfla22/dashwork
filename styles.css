@@ -236,11 +236,13 @@ svg {
 #mytable th {
     background-color: hsl(196 70 28);
     color: hsl(196 70 88);
+    border: 1px solid var(--border);
     font-weight: 600;
 }
 
 #mytable tr:hover {
     background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
     color: var(--bg-card);
 }
 

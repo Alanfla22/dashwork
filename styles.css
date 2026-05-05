@@ -215,6 +215,7 @@ svg {
 #mytable {
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid var(--border);
     background: var(--bg-card);
     border-radius: 8px;
 

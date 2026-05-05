@@ -240,11 +240,6 @@ svg {
     font-weight: 600;
 }
 
-#mytable tr:hover {
-    background-color: rgba(255, 255, 255, 0.03);
-    color: var(--bg-card);
-}
-
 /* Responsividade Mobile */
 @media (max-width: 768px) {
 

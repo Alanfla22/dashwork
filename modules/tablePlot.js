@@ -41,13 +41,15 @@ export function tabulate(dados) {
     .enter()
     .append("td")
     .on("mouseover", function () {
-                d3.select(this.parentNode).style("background-color", "hsl(196 70 88)");
+                d3.select(this.parentNode).style("background-color", "hsl(196 70 88)")
+                .style("color", "black");
                 
                                                 
      
             })
     .on("mouseout", function () {
-                d3.select(this.parentNode).style("background-color", "hsl(217 33 17)");  
+                d3.select(this.parentNode).style("background-color", "hsl(217 33 17)")
+                .style("color", "white");  
 
             })
     .text(d => d.value);

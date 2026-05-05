@@ -209,10 +209,7 @@ svg {
 .tabela {
     height: 100%;
     overflow-y: scroll;
-    border-top: 1px solid var(--border);
-    border-right: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
     border-radius: 12px;
 }
 
@@ -226,9 +223,8 @@ svg {
 
 #mytable thead {
     position: sticky;
-    top: 0;
+    top: -1px;
     border-radius: 12px;
-    border: 2px solid var(--border);
     background: hsl(196 70 28);
 }
 

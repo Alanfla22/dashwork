@@ -209,9 +209,7 @@ svg {
 .tabela {
     height: 100%;
     overflow-y: scroll;
-    border-right: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
     border-radius: 12px;
 }
 

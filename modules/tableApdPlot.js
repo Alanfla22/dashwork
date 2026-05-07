@@ -5,6 +5,8 @@ const tableapd = d3.select("#mytable");
 
 export function tabulateApd(dados) {
 
+    dados.sort((a, b) => new Date(parseInt(a.Data.split("/")[2]), parseInt(a.Data.split("/")[1]), parseInt(a.Data.split("/")[0])) - new Date(parseInt(b.Data.split("/")[2]), parseInt(b.Data.split("/")[1]), parseInt(b.Data.split("/")[0])));
+
     tableapd.select("thead").remove();
     tableapd.select("tbody").remove();
 

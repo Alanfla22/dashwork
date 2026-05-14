@@ -51,6 +51,8 @@ export function filtrarForm (filtros, inputs) {
 
                     item.Data = item[data.columns[9]].split(" ")[0]
                     item.Tipo = item["Tipo Solicita��o"];
+                    item.Super = item["Nome Superintendencia"];
+                    item.Agencia = item["Nome Ag�ncia"];                    
                     dados.push(item);
 
                 };               
@@ -72,6 +74,8 @@ export function filtrarForm (filtros, inputs) {
                 item.Data = item["Data de Cria��o"];
                 item.Nome = item["Nome Cliente"];
                 item.Tarefa = item["Situa��o"];
+                item.Super = item["Superintend�ncia"].split("-")[1];
+                item.Agencia = item["Ag�ncia"].split("-")[1];             
                 item.Tipo = item["Tipo IC"];
                 dados.push(item);
                 

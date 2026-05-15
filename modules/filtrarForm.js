@@ -99,6 +99,21 @@ export function filtrarForm (filtros, inputs) {
             
             return dados;
         
+        });
+
+    const basepaths = d3.dsv(",", inputs["BNB_Paths.csv"]).then(data => {
+
+
+            var dados = [];
+
+            data.forEach((item) => {
+
+                dados.push(item);
+                
+            });
+
+            return dados;
+        
         });        
     
     baseguarda.then((guarda) => {   
@@ -111,7 +126,7 @@ export function filtrarForm (filtros, inputs) {
                 const buttonTable = d3.select("#defaultOpen");
 
                 buttonTable.on("click", function () {
-                    tabulate(dados);
+                    tabulate(dados, basepaths);
                     d3.select(this).style("background-color", "hsl(196 70 88)")
                     .style("color", "black");
 
@@ -141,7 +156,7 @@ export function filtrarForm (filtros, inputs) {
                 const buttonTableApd = d3.select("#apdOpen");
 
                 buttonTableApd.on("click", function () {
-                    tabulateApd(dadosApd);
+                    tabulateApd(dadosApd, basepaths);
                     d3.select(this).style("background-color", "hsl(196 70 88)")
                     .style("color", "black");
 

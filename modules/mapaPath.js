@@ -1,9 +1,15 @@
-export function munPath (mun, uf) {
+function mapaMun (dados, paths) {
 
-    d3.csv("./data/BNB_Paths.csv").then((data) => {
+    paths.then((path) => {
 
-        data.forEach((d) => {
+        console.log(path);
 
+        path.forEach((d) => {
+
+            var valores = Object.values(dados);
+
+            var uf = dados["Super"];
+            var mun = dados["Agencia"];
 
             var municipio = mun.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             var estado = uf.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -22,12 +28,21 @@ export function munPath (mun, uf) {
                 .text(d["NM_MUN"]);
                 
                 d3.select("#uf")
-                .text(d["NM_UF"]);
-          
+                .text(d["NM_UF"]);    
+           
+        
             } 
         })
 
+    })    
 
-    })
 
 }
+
+
+export function munPath (dados, paths) {
+
+        mapaMun(dados, paths);
+
+}
+

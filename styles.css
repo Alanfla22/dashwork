@@ -161,7 +161,7 @@ fieldset {
 
 }
 
-.graficos {
+.graficos, .graficos_mapa {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -174,8 +174,14 @@ fieldset {
     gap: 1rem;
 }
 
+.graficos_3 {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+}
+
 /* Containers de SVG */
-.graficos_1 > div, .graficos_2 > div {
+.graficos_1 > div, .graficos_2 > div, .graficos_3 > div {
     background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 12px;
@@ -186,6 +192,10 @@ fieldset {
 svg {
     max-width: 100%;
     height: auto !important; /* Permite responsividade do D3 */
+}
+
+.super:hover {
+    filter: brightness(1.4);
 }
 
 /* Seletores de Gráfico */
@@ -262,6 +272,5 @@ svg {
 
 
 }
-
 
 

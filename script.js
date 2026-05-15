@@ -1,6 +1,6 @@
 
 import {filtrarForm} from "./modules/filtrarForm.js";
-import {atualizaFiles} from "./modules/atualizar.js";
+import {atualizarInputs} from "./modules/atualizar.js";
 
 const supers = [
     {Super: "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO"},
@@ -24,7 +24,7 @@ const input = document.getElementById("myfile");
 
 input.addEventListener("change", () => {
 
-    const objectFiles = atualizaFiles(input);
+    const objectFiles = atualizarInputs(input);
 
     console.log(objectFiles);
 

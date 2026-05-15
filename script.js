@@ -48,7 +48,10 @@ input.addEventListener("change", () => {
         .text("_");
         
         d3.select("#uf")
-        .text("_");            
+        .text("_");
+
+        d3.select("#ufselected")
+        .text(" ");        
 
         filtrarForm(listaForm, objectFiles);
     };
@@ -67,6 +70,9 @@ input.addEventListener("change", () => {
         d3.select(this)
         .attr("class", "superselected")
         .attr("fill", "hsl(196 70 88)");
+
+        d3.select("#ufselected")
+        .text(selecao.Super);            
 
         filtrarForm([["Super", Object.values(selecao)[0]]], objectFiles);
 

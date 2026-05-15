@@ -1,9 +1,11 @@
 
+import {munPath} from "./mapaPath.js";
+
 const columns = ["Data", "Nome", "Tipo", "Tarefa", "Dono", "Guarda"];
 
 const table = d3.select("#mytable");            
 
-export function tabulate(dados) {
+export function tabulate(dados, basepaths) {
 
     // ordenacao
 
@@ -56,6 +58,13 @@ export function tabulate(dados) {
                 .style("color", "white");  
 
             })
+    .on("click", function () {
+    
+            const dados = this.parentNode.__data__;
+    
+            munPath(dados, basepaths);
+    
+        })      
     .text(d => d.value);
 
     d3.select("#defaultOpen").style("background-color", "hsl(196 70 88)")

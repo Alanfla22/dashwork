@@ -1,9 +1,10 @@
+import {munPath} from "./mapaPath.js";
 
 const columns = ["Data", "Nome", "Tipo", "Tarefa", "Ag�ncia", "Guarda"];
 
 const tableapd = d3.select("#mytable");
 
-export function tabulateApd(dados) {
+export function tabulateApd(dados, basepaths) {
 
     dados.sort((a, b) => new Date(parseInt(a.Data.split("/")[2]), parseInt(a.Data.split("/")[1]), parseInt(a.Data.split("/")[0])) - new Date(parseInt(b.Data.split("/")[2]), parseInt(b.Data.split("/")[1]), parseInt(b.Data.split("/")[0])));
 
@@ -51,6 +52,13 @@ export function tabulateApd(dados) {
                 .style("color", "white");  
 
             })
+    .on("click", function () {
+
+                const dados = this.parentNode.__data__;
+
+                munPath(dados, basepaths);
+
+            })           
     .text(d => d.value);
 
     d3.select("#apdOpen").style("background-color", "hsl(196 70 88)")

@@ -108,7 +108,7 @@ fieldset {
     border-radius: 6px;
     font-weight: 600;
     cursor: pointer;
-    transition: filter 0.2s;
+    transition: 0.3s;
 }
 
 .submit:hover {

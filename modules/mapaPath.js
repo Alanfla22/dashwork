@@ -2,8 +2,6 @@ function mapaMun (dados, paths) {
 
     paths.then((path) => {
 
-        console.log(path);
-
         path.forEach((d) => {
 
             var valores = Object.values(dados);

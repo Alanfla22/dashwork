@@ -1,7 +1,6 @@
 
 export function atualizarInputs (input) {
 
-    console.log(input.files)
     const listFiles = input.files;
     var objectFiles = {};
 
@@ -9,8 +8,7 @@ export function atualizarInputs (input) {
         objectFiles[file.name] = URL.createObjectURL(file);
     })
 
-    console.log(objectFiles);
-    
+   
     return objectFiles;
 
 }

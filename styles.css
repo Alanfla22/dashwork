@@ -241,6 +241,7 @@ svg {
 #mytable th, #mytable td {
     padding: 12px 15px;
     text-align: left;
+    cursor: pointer;
     border-bottom: 1px solid var(--bg-dark);
 }
 

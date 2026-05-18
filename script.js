@@ -17,7 +17,9 @@ const supers = [
 ];
 
 d3.selectAll(".super")
-.data(supers).enter()
+.data(supers).enter();
+
+d3.selectAll(".super")
 .style("cursor", "pointer");
 
 

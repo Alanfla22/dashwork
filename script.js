@@ -17,7 +17,8 @@ const supers = [
 ];
 
 d3.selectAll(".super")
-.data(supers).enter();
+.data(supers).enter()
+.style("cursor", "pointer");
 
 
 const input = document.getElementById("myfile");

@@ -66,6 +66,8 @@ input.addEventListener("change", () => {
 
         const selecao = d3.select(this)._groups[0][0].__data__;
 
+        const filtro = [["Super", Object.values(selecao)[0]]];
+
         d3.select(".superselected")
         .attr("class", "super")
         .attr("fill", "hsl(196 70 28)");
@@ -77,7 +79,7 @@ input.addEventListener("change", () => {
         d3.select("#ufselected")
         .text(selecao.Super);            
 
-        filtrarForm([["Super", Object.values(selecao)[0]]], objectFiles);
+        filtrarForm(filtro, objectFiles);
 
 
     })

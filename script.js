@@ -22,7 +22,9 @@ d3.selectAll(".super")
 d3.selectAll(".super")
 .attr("fill", "hsl(196 70 28)")
 .style("transition", "0.3s")
-.style("cursor", "pointer");
+.style("cursor", "pointer")
+.append("title")
+.text((d) => d.Super);
 
 
 const input = document.getElementById("myfile");
@@ -30,8 +32,6 @@ const input = document.getElementById("myfile");
 input.addEventListener("change", () => {
 
     const objectFiles = atualizarInputs(input);
-
-    console.log(objectFiles);
 
     filtrarForm([], objectFiles);
 
@@ -82,9 +82,7 @@ input.addEventListener("change", () => {
         filtrarForm(filtro, objectFiles);
 
 
-    })
-    .append("title")
-    .text((d) => d.Super);    
+    });   
 
 })
 

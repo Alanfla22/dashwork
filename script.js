@@ -20,6 +20,8 @@ d3.selectAll(".super")
 .data(supers).enter();
 
 d3.selectAll(".super")
+.attr("fill", "hsl(196 70 28)")
+.style("transition", "0.3s")
 .style("cursor", "pointer");
 
 
@@ -60,8 +62,6 @@ input.addEventListener("change", () => {
     };
 
     d3.selectAll(".super")
-    .attr("fill", "hsl(196 70 28)")
-    .style("transition", "0.3s")
     .on("click", function () {
 
         const selecao = d3.select(this)._groups[0][0].__data__;

@@ -20,13 +20,9 @@ export function filtrarForm (filtros, inputs) {
     var groupTipo = [];
     var groupApdTipo = [];
     
-    var groupGuarda = [];
-    var groupApdGuarda = [];        
-
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
     const fieldTipo = d3.select("#fieldTipo");
-    const fieldGuarda = d3.select("#fieldGuarda");    
 
     field.selectAll("input").remove();
     field.selectAll("label").remove();
@@ -172,9 +168,7 @@ export function filtrarForm (filtros, inputs) {
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
-                const guardas = new Set(groupGuarda.concat(groupApdGuarda));
-
-                
+               
 
                 datas.forEach((item) => {
                     field.append("input")

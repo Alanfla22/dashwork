@@ -1,4 +1,4 @@
-function mapaMun (dados, paths) {
+export function munPath (dados, paths) {
 
     paths.then((path) => {
 
@@ -32,15 +32,7 @@ function mapaMun (dados, paths) {
             } 
         })
 
-    })    
-
-
-}
-
-
-export function munPath (dados, paths) {
-
-        mapaMun(dados, paths);
+    })  
 
 }
 

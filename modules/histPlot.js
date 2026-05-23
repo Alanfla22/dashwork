@@ -7,8 +7,6 @@ const margin = 40;
 const xMax = xSize - margin*2;
 const yMax = ySize - margin*2;        
 
-const plotHist = d3.select("#myhist").append("svg");
-
 export function histogramSvg (dados, titulo, plot) {
     
     plot.selectAll("g").remove();
@@ -17,7 +15,7 @@ export function histogramSvg (dados, titulo, plot) {
     const dadosHist = Object.entries(result);
     dadosHist.sort((a, b) => new Date(parseInt(a[0].split("/")[2]), parseInt(a[0].split("/")[1]), parseInt(a[0].split("/")[0])) - new Date(parseInt(b[0].split("/")[2]), parseInt(b[0].split("/")[1]), parseInt(b[0].split("/")[0])));
 
-    const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
+    const svg = plot.append("g").attr("transform","translate(" + margin + "," + margin + ")");
 
     // Sort array
     

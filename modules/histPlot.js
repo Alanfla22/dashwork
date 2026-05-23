@@ -9,9 +9,9 @@ const yMax = ySize - margin*2;
 
 const plotHist = d3.select("#myhist").append("svg");
 
-export function histogramSvg (dados) {
+export function histogramSvg (dados, titulo, plot) {
     
-    plotHist.selectAll("g").remove();
+    plot.selectAll("g").remove();
     
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
@@ -28,7 +28,7 @@ export function histogramSvg (dados) {
     .attr("x", 2)
     .attr("y", -10)
     .attr("font-size", 30)
-    .text("S522")
+    .text(titulo)
     .attr('fill', "hsl(196 70 88)");
 
     svg.append("g")

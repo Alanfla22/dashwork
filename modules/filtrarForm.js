@@ -3,6 +3,7 @@ import {pieapdSvg} from "./pieapdPlot.js";
 import {SelectpieapdSVG} from "./pieapdPlot.js";
 import {SelectpieSVG} from "./piePlot.js";
 import {histogramSvg} from "./histPlot.js";
+import {histogramApdSvg} from "./histapdPlot.js";
 import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
@@ -133,10 +134,8 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-
-                const plotHist = d3.select("#myhist").append("svg");
                 
-                histogramSvg(dados, "S522", plotHist);   
+                histogramSvg(dados);   
                 pieSvg(dados, "Tipo")
                 SelectpieSVG(dados);
 
@@ -207,9 +206,7 @@ export function filtrarForm (filtros, inputs) {
                     fieldTipo.append("br")
                 })
 
-                const plotHistApd = d3.select("#myhistapd").append("svg");
-                
-                histogramSvg(dados, "APD", plotHistApd);  
+                histogramApdSvg(dadosApd);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
 

@@ -89,6 +89,22 @@ fieldset {
 
 }
 
+.selector {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+
+}
+
+.selector:hover {
+    border-color: var(--primary-color);
+}
+
 .selector option{
     background: var(--bg-dark);
     color: var(--text-dim);
@@ -200,23 +216,6 @@ rect:hover {
 
 path:hover {
     fill: hsl(196 70 88);
-}
-
-* Seletores de Gráfico */
-.selector {
-    background: var(--bg-dark);
-    color: var(--text-main);
-    border: 1px solid var(--border);
-    padding: 5px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-
-}
-
-.selector:hover {
-    border-color: var(--primary-color);
 }
 
 /* Tabela de Dados */

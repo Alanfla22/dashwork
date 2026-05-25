@@ -44,8 +44,10 @@ input.addEventListener("change", () => {
         };
 
         d3.select(".superselected")
-        .attr("class", "super")
-        .attr("fill", "hsl(196 70 28)");
+        .attr("class", "super");
+
+        d3.selectAll(".super")
+        .style("opacity", "1");
 
         d3.select("#newpath").remove();
 
@@ -69,12 +71,14 @@ input.addEventListener("change", () => {
         const filtro = [["Super", Object.values(selecao)[0]]];
 
         d3.select(".superselected")
-        .attr("class", "super")
-        .attr("fill", "hsl(196 70 28)");
+        .attr("class", "super");
+
+        d3.selectAll(".super")
+        .style("opacity", "0.2");
 
         d3.select(this)
         .attr("class", "superselected")
-        .attr("fill", "hsl(196 70 88)");
+        .style("opacity", "1");
 
         d3.select("#ufselected")
         .text(selecao.Super);            

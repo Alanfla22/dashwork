@@ -80,13 +80,19 @@ export function histogramSvg (dados) {
         .attr("height", d => yMax - yScale(d[1].length)
         )
     )
-    .on("mouseover", function () {
-        d3.select(this).attr("fill", "hsl(196 70 88)");               
-    })
-    .on("mouseout", function () {
-        d3.select(this).attr("fill","hsl(196 70 28)");   
-    })
     .on("click", function () {
+
+                    d3.selectAll("path")
+                    .style("opacity", "0.2");
+
+                    d3.selectAll("rect")
+                    .style("opacity", "0.2");
+
+                    d3.selectAll(".superselected")
+                    .style("opacity", "1");             
+                    
+                    d3.select(this)
+                    .style("opacity", "1");
                     const selecao = d3.select(this)._groups[0][0].__data__[0];
                     filtrarTable(dados, "Data", selecao);
 

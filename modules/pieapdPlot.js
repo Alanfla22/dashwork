@@ -57,6 +57,17 @@ export function pieapdSvg (dados, option) {
             d3.select(this).attr("fill", d => color(d.data[0]));
         })
         .on("click", function () {
+            d3.selectAll("path")
+            .style("opacity", "0.2");
+
+            d3.selectAll("rect")
+            .style("opacity", "0.2");
+
+            d3.selectAll(".superselected")
+            .style("opacity", "1");           
+            
+            d3.select(this)
+            .style("opacity", "1");            
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];                
             filtrarTableApd(dados, option, selecao);                
 
@@ -80,14 +91,20 @@ export function pieapdSvg (dados, option) {
         .attr("fill", d => color(d.data[0]))
         .style("cursor", "pointer")  
         .style("transition", "0.3s")
-        .on("mouseover", function () {
-            d3.select(this).attr("fill", "hsl(196 70 88)");
-        
-        })
-        .on("mouseout", function () {    
-            d3.select(this).attr("fill", d => color(d.data[0]));
-        })
         .on("click", function () {
+
+            d3.selectAll("path")
+            .style("opacity", "0.2");
+
+            d3.selectAll("rect")
+            .style("opacity", "0.2");
+
+            d3.selectAll(".superselected")
+            .style("opacity", "1");        
+            
+            d3.select(this)
+            .style("opacity", "1");
+
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];                
             filtrarTableApd(dados, option, selecao);                
 

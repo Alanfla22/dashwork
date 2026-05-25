@@ -194,11 +194,15 @@ svg {
     height: auto !important; /* Permite responsividade do D3 */
 }
 
-.super:hover {
-    filter: brightness(1.4);
+rect:hover {
+    fill: hsl(196 70 88);
 }
 
-/* Seletores de Gráfico */
+path:hover {
+    fill: hsl(196 70 88);
+}
+
+* Seletores de Gráfico */
 .selector {
     background: var(--bg-dark);
     color: var(--text-main);

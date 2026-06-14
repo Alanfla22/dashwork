@@ -1,5 +1,5 @@
 
-import {filtrarTableApd} from "./filtrarTableApd.js";
+import {tabulateApd} from "./tableApdPlot.js";
 
 const xSize = 500;
 const ySize = 345;
@@ -16,10 +16,7 @@ export function histogramApdSvg (dados) {
     
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
-        // ordenacao
-
-    const parseTime = d3.utcParse("%d/%m/%Y");
-    dadosHist.sort((a, b) => parseTime(a[0]) - parseTime(b[0])); 
+    dadosHist.sort((a, b) => new Date(parseInt(a[0].split("/")[2]), parseInt(a[0].split("/")[1]), parseInt(a[0].split("/")[0])) - new Date(parseInt(b[0].split("/")[2]), parseInt(b[0].split("/")[1]), parseInt(b[0].split("/")[0])));    
 
     const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
 
@@ -96,7 +93,9 @@ export function histogramApdSvg (dados) {
                     .style("opacity", "1");    
 
                     const selecao = d3.select(this)._groups[0][0].__data__[0];
-                    filtrarTableApd(dados, "Data", selecao);
+                    const result = dados.filter((d) => d["Data"] == selecao);
+
+                    tabulateApd(result);
                 })
     .append("title")
     .text(d => "" + d[0] + " - " + d[1].length + "");

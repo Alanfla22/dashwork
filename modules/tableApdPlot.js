@@ -6,7 +6,9 @@ const tableapd = d3.select("#mytable");
 
 export function tabulateApd(dados, basepaths) {
 
-    dados.sort((a, b) => new Date(parseInt(a.Data.split("/")[2]), parseInt(a.Data.split("/")[1]), parseInt(a.Data.split("/")[0])) - new Date(parseInt(b.Data.split("/")[2]), parseInt(b.Data.split("/")[1]), parseInt(b.Data.split("/")[0])));
+    const parseTime = d3.utcParse("%d/%m/%Y");
+
+    dados.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
 
     tableapd.select("thead").remove();
     tableapd.select("tbody").remove();

@@ -16,7 +16,10 @@ export function histogramApdSvg (dados) {
     
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
-    dadosHist.sort((a, b) => new Date(parseInt(a[0].split("/")[2]), parseInt(a[0].split("/")[1]), parseInt(a[0].split("/")[0])) - new Date(parseInt(b[0].split("/")[2]), parseInt(b[0].split("/")[1]), parseInt(b[0].split("/")[0])));    
+        // ordenacao
+
+    const parseTime = d3.utcParse("%d/%m/%Y");
+    dadosHist.sort((a, b) => parseTime(a[0]) - parseTime(b[0])); 
 
     const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
 

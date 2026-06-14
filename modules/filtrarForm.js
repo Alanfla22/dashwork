@@ -37,10 +37,10 @@ export function filtrarForm (filtros, inputs) {
     fieldTipo.selectAll("label").remove();
     fieldTipo.selectAll("br").remove();
     
-    const base = dadosInput(inputs).base;
-    const baseapd = dadosInput(inputs).baseapd;
-    const baseguarda = dadosInput(inputs).baseguarda;
-    const basepaths = dadosInput(inputs).basepaths;     
+    const base = inputs.base;
+    const baseapd = inputs.baseapd;
+    const baseguarda = inputs.baseguarda;
+    const basepaths = inputs.basepaths;     
     
     baseguarda.then((guarda) => {   
 

@@ -9,7 +9,9 @@ export function tabulate(dados, basepaths) {
 
     // ordenacao
 
-    dados.sort((a, b) => new Date(parseInt(a.Data.split("/")[2]), parseInt(a.Data.split("/")[1]), parseInt(a.Data.split("/")[0])) - new Date(parseInt(b.Data.split("/")[2]), parseInt(b.Data.split("/")[1]), parseInt(b.Data.split("/")[0])));
+    const parseTime = d3.utcParse("%d/%m/%Y");
+
+    dados.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
 
     table.select("thead").remove();
     table.select("tbody").remove();

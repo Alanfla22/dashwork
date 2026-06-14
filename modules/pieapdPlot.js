@@ -1,4 +1,4 @@
-import {filtrarTableApd} from "./filtrarTableApd.js";
+import {tabulateApd} from "./tableApdPlot.js";
   
     
 const xSize = 500;
@@ -69,7 +69,9 @@ export function pieapdSvg (dados, option) {
             d3.select(this)
             .style("opacity", "1");            
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];                
-            filtrarTableApd(dados, option, selecao);                
+            const result = dados.filter((d) => d[option] == selecao);
+
+            tabulateApd(result);               
 
         })        ;
 
@@ -106,7 +108,9 @@ export function pieapdSvg (dados, option) {
             .style("opacity", "1");
 
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];                
-            filtrarTableApd(dados, option, selecao);                
+            const result = dados.filter((d) => d[option] == selecao);
+
+            tabulateApd(result);                  
 
         })
         .append("title")

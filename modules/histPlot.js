@@ -1,5 +1,5 @@
 
-import {filtrarTable} from "./filtrarTable.js";
+import {tabulate} from "./tablePlot.js";
 
 const xSize = 500;
 const ySize = 345;
@@ -15,11 +15,10 @@ export function histogramSvg (dados) {
     
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
-        // ordenacao
-
     const parseTime = d3.utcParse("%d/%m/%Y");
 
     dadosHist.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
+
     const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
 
     // Sort array
@@ -97,7 +96,11 @@ export function histogramSvg (dados) {
                     d3.select(this)
                     .style("opacity", "1");
                     const selecao = d3.select(this)._groups[0][0].__data__[0];
-                    filtrarTable(dados, "Data", selecao);
+
+                    const result = dados.filter((d) => d["Data"] == selecao);
+
+                    tabulate(result);
+      
 
                 })
     .append("title")

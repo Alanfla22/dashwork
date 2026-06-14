@@ -84,31 +84,15 @@ export function filtrarForm (filtros, inputs) {
 
     const baseguarda = d3.dsv(";", inputs["guarda.csv"]).then(data => {
 
-
-            var dados = [];
-
-            data.forEach((item) => {
-
-                dados.push(item);
-                
-            });
             
-            return dados;
+            return data;
         
         });
 
     const basepaths = d3.dsv(",", inputs["BNB_Paths.csv"]).then(data => {
 
 
-            var dados = [];
-
-            data.forEach((item) => {
-
-                dados.push(item);
-                
-            });
-
-            return dados;
+            return data;
         
         });        
     

@@ -7,8 +7,7 @@ import {histogramApdSvg} from "./histapdPlot.js";
 import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
-import {dadosInput} from "./dados.js";
- 
+
 
 export function filtrarForm (filtros, inputs) {
 

@@ -1,4 +1,4 @@
-
+import { dadosInput } from "./modules/dados.js"; 
 import {filtrarForm} from "./modules/filtrarForm.js";
 import {atualizarInputs} from "./modules/atualizar.js";
 
@@ -32,9 +32,10 @@ const input = document.getElementById("myfile");
 input.addEventListener("change", () => {
 
     const objectFiles = atualizarInputs(input);
+    const inputs = dadosInput(objectFiles);
 
-    filtrarForm([], objectFiles);
-
+    filtrarForm([], inputs);
+    
     testForm.onsubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(testForm);
@@ -60,7 +61,7 @@ input.addEventListener("change", () => {
         d3.select("#ufselected")
         .text(" ");        
 
-        filtrarForm(listaForm, objectFiles);
+        filtrarForm(listaForm, inputs);
     };
 
     d3.selectAll(".super")
@@ -83,7 +84,7 @@ input.addEventListener("change", () => {
         d3.select("#ufselected")
         .text(selecao.Super);            
 
-        filtrarForm(filtro, objectFiles);
+        filtrarForm(filtro, inputs);
 
 
     });   

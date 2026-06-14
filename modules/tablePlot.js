@@ -13,6 +13,8 @@ export function tabulate(dados, basepaths) {
 
     dados.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
 
+    console.log(dados);
+
     table.select("thead").remove();
     table.select("tbody").remove();
 

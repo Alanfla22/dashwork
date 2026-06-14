@@ -8,7 +8,7 @@ export function tabulateApd(dados, basepaths) {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    dados.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
+    dados.sort((a, b) => parseTime(a.Data) - parseTime(b.Data));
 
     tableapd.select("thead").remove();
     tableapd.select("tbody").remove();

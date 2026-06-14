@@ -1,4 +1,4 @@
-import {filtrarTable} from "./filtrarTable.js";
+import {tabulate} from "./tablePlot.js";
 
 
 const xSize = 500;
@@ -72,7 +72,9 @@ export function pieSvg (dados, option) {
             d3.select(this)
             .style("opacity", "1");            
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];
-            filtrarTable(dados, option, selecao);
+            const result = dados.filter((d) => d[option] == selecao);
+
+            tabulate(result);
         })        ;
 
         legend.selectAll('text')
@@ -110,7 +112,9 @@ export function pieSvg (dados, option) {
             .style("opacity", "1");
 
             const selecao = d3.select(this)._groups[0][0].__data__.data[0];
-            filtrarTable(dados, option, selecao);
+            const result = dados.filter((d) => d[option] == selecao);
+
+            tabulate(result);
         })
         .append("title")
         .text(d => "" + d.data[0] + " - " + d.data[1].length + "");

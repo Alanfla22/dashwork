@@ -65,7 +65,7 @@ export function filtrarForm (filtros, inputs) {
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
                 
                 histogramSvg(dados);   
-                pieSvg(dados, "Tipo")
+                pieSvg(dados, "Tipo");
                 SelectpieSVG(dados);
 
                 buttonTable.node().click();

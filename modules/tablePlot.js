@@ -11,9 +11,7 @@ export function tabulate(dados, basepaths) {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    dados.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));
-
-    console.log(dados);
+    dados.sort((a, b) => parseTime(a.Data) - parseTime(b.Data));
 
     table.select("thead").remove();
     table.select("tbody").remove();

@@ -32,7 +32,7 @@ export function histogramApdSvg (dados) {
 
     svg.append("g")
     .append("text")    
-    .attr("x", 400)
+    .attr("x", 380)
     .attr("y", 0)
     .attr("font-size", 50)
     .text(`${dados.length}`)

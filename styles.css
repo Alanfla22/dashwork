@@ -184,6 +184,7 @@ fieldset {
     gap: 1rem;
 }
 
+
 .graficos_1, .graficos_2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
@@ -192,12 +193,12 @@ fieldset {
 
 .graficos_3 {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 2fr 1fr;
     gap: 1rem;
 }
 
 /* Containers de SVG */
-.graficos_1 > div, .graficos_2 > div, .graficos_3 > div {
+.graficos_1 > div, .graficos_2 > div, .graficos_3 > div, .graficos_4 > div {
     background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 12px;
@@ -216,6 +217,15 @@ rect:hover {
 
 path:hover {
     fill: hsl(196 70 88);
+}
+
+circle {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+circle:hover {
+    opacity: 1;
 }
 
 /* Tabela de Dados */

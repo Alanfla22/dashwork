@@ -4,6 +4,7 @@ import {SelectpieapdSVG} from "./pieapdPlot.js";
 import {SelectpieSVG} from "./piePlot.js";
 import {histogramSvg} from "./histPlot.js";
 import {histogramApdSvg} from "./histapdPlot.js";
+import {lineSvg} from "./evolucaoPlot.js";
 import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
@@ -39,13 +40,18 @@ export function filtrarForm (filtros, inputs) {
     const base = inputs.base;
     const baseapd = inputs.baseapd;
     const baseguarda = inputs.baseguarda;
-    const basepaths = inputs.basepaths;     
+    const basepaths = inputs.basepaths; 
+    
+    var totalBase = 0;
+    var totalBaseapd = 0;
     
     baseguarda.then((guarda) => {   
 
         base.then(       
 
             function (values) {
+
+                totalBase = values.length;
                 const dados = filtrar(values, guarda, filtros);
 
                 const buttonTable = d3.select("#defaultOpen");
@@ -76,6 +82,8 @@ export function filtrarForm (filtros, inputs) {
         baseapd.then(
 
             function (values) {
+
+                totalBaseapd = values.length;
 
                 const dadosApd = filtrar(values, guarda, filtros);            
                 const buttonTableApd = d3.select("#apdOpen");
@@ -135,9 +143,15 @@ export function filtrarForm (filtros, inputs) {
                     fieldTipo.append("br")
                 })
 
+                const total = totalBase + totalBaseapd;
+                const data = d3.utcFormat("%d/%m/%Y")(new Date()); 
+
+                localStorage.setItem(data, total);
+
                 histogramApdSvg(dadosApd);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
+                lineSvg();
 
             }
 

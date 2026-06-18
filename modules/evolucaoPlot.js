@@ -19,6 +19,10 @@ export function lineSvg () {
 
     }
 
+    const parseTime = d3.utcParse("%d/%m/%Y");
+
+    historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));    
+
     const svg = plotEvol.append("g")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)

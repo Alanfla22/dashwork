@@ -74,7 +74,7 @@ export function histogramSvg (dados) {
     .attr("y", yMax)
     .attr("width", xScale.bandwidth())
     .attr("height", 0)
-    .attr("fill", d3.timeDay.count(parseTime(d[0]), new Date()) > 3 ? "red" : "hsl(196 70 28)")
+    .attr("fill", d => d3.timeDay.count(parseTime(d[0]), new Date()) > 3 ? "red" : "hsl(196 70 28)")
     .style("cursor", "pointer")
     .style("transition", "0.3s")
     .call(enter => enter.transition()

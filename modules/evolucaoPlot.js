@@ -49,6 +49,13 @@ export function lineSvg () {
                     .range([height, 0])
                     .nice();
 
+    svg.append("g")
+        .call(d3.axisLeft(yScale));
+        
+    svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(xScale).tickValues([]));      
+
                         
     svg.append("g")
     .append("text")    
@@ -72,11 +79,6 @@ export function lineSvg () {
     .append("title")
     .text((d, i) => `${historico[i + 1].data} - ${d.total + (d.calc / 2)} média`);                  
 
-    svg.append("g")
-        .call(d3.axisLeft(yScale));
-        
-    svg.append("g")
-        .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(xScale).tickValues([]));   
+
 
 }

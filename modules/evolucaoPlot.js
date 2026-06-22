@@ -70,7 +70,7 @@ export function lineSvg () {
     .style("cursor", "pointer")
     .style("transition", "0.3s")
     .append("title")
-    .text(d => `${d.data} - ${d.total + (d.calc / 2)} média`);                  
+    .text((d, i) => `${historico[i + 1].data} - ${d.total + (d.calc / 2)} média`);                  
 
     svg.append("g")
         .call(d3.axisLeft(yScale));

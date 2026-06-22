@@ -33,7 +33,7 @@ export function lineSvg () {
         }        
     })
     
-    const tempo = d3.max(historico, d => parseTime(d.data)) - d3.min(historico, d => parseTime(d.data));
+    const intervalo = d3.max(historico, d => parseTime(d.data)) - d3.min(historico, d => parseTime(d.data));
 
     const svg = plotEvol.append("g")
                 .attr("width", width + margin.left + margin.right)
@@ -71,7 +71,7 @@ export function lineSvg () {
     .append("rect")        
     .attr("x", d => xScale(parseTime(d.data)))
     .attr("y", d => d.calc < 0 ? yScale(d.total) : yScale(d.total + d.calc))
-    .attr("width", d => d.dias * (450 / tempo))
+    .attr("width", d => d.dias * (width / intervalo))
     .attr("height", d => yScale(d.total) - yScale(d.total + Math.abs(d.calc)))
     .attr("fill", d => d.calc < 0 ? "green" : "hsl(0 70 28)")
     .style("cursor", "pointer")

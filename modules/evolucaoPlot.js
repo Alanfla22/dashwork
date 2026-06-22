@@ -21,7 +21,19 @@ export function lineSvg () {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));    
+    historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));
+    
+    historico.map((value, index, array) => {
+
+        if (index < array.length - 1) {
+
+            value.calc = array[index + 1].total - value.total;
+            value.dias = parseTime(array[index + 1].data) - parseTime(value.data);
+
+        }        
+    })
+    
+    const tempo = d3.max(historico, d => parseTime(d.data)) - d3.min(historico, d => parseTime(d.data));
 
     const svg = plotEvol.append("g")
                 .attr("width", width + margin.left + margin.right)
@@ -29,17 +41,13 @@ export function lineSvg () {
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
             
     const xScale = d3.scaleTime()
-                    .domain(d3.extent(historico, d => d3.utcParse("%d/%m/%Y")(d.data)))
+                    .domain(d3.extent(historico, d => parseTime(d.data)))
                     .range([0, width]);
 
     const yScale = d3.scaleLinear()
                     .domain([0, d3.max(historico, d => d.total)])
                     .range([height, 0])
                     .nice();
-
-    const line = d3.line()
-                    .x(d => xScale(d3.utcParse("%d/%m/%Y")(d.data)))
-                    .y(d => yScale(d.total));
 
                         
     svg.append("g")
@@ -49,25 +57,20 @@ export function lineSvg () {
     .attr("font-size", 20)
     .text("Histórico")
     .attr('fill', "hsl(196 70 88)");
-
-    svg.append("path")
-        .datum(historico)
-        .attr("fill", "none")
-        .attr("stroke", "hsl(196 70 28)")
-        .attr("stroke-width", 2)
-        .attr("d", line);
-
-        
-    svg.selectAll("circle")
-        .data(historico).enter()
-        .append("circle")
-        .attr("cx", d => xScale(d3.utcParse("%d/%m/%Y")(d.data)))
-        .attr("cy", d => yScale(d.total))
-        .attr("r", 5)
-        .attr("fill", "hsl(196 70 88)")
-        .style("cursor", "pointer")
-        .append("title")
-        .text(d => "" + d.data + " - " + d.total + "");                
+   
+    svg.append('g')
+    .selectAll("rect")
+    .data(historico).enter()
+    .append("rect")        
+    .attr("x", d => xScale(parseTime(d.data)))
+    .attr("y", d => d.calc < 0 ? yScale(d.total) : yScale(d.total + d.calc))
+    .attr("width", d => d.dias * (450 / tempo))
+    .attr("height", d => d.calc < 0 ? (yScale(d.total) - yScale(d.total - d.calc)) : (yScale(d.total) - yScale(d.total + d.calc)))
+    .attr("fill", d => d.calc < 0 ? "green" : "hsl(0 70 28)")
+    .style("cursor", "pointer")
+    .style("transition", "0.3s")
+    .append("title")
+    .text(d => `${d.data} - ${d.total + (d.calc / 2)} média`);                  
 
     svg.append("g")
         .call(d3.axisLeft(yScale));
@@ -76,4 +79,4 @@ export function lineSvg () {
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(xScale).tickValues([]));   
 
-}        
+}

@@ -40,8 +40,9 @@ export function filtrarForm (filtros, inputs) {
     const base = inputs.base;
     const baseapd = inputs.baseapd;
     const baseguarda = inputs.baseguarda;
-    const basepaths = inputs.basepaths; 
-    
+    const basepaths = inputs.basepaths;
+    const dataFiles = inputs.dataFiles;
+
     var totalBase = 0;
     var totalBaseapd = 0;
     
@@ -70,7 +71,7 @@ export function filtrarForm (filtros, inputs) {
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
                 
-                histogramSvg(dados);   
+                histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
                 SelectpieSVG(dados);
 
@@ -148,7 +149,7 @@ export function filtrarForm (filtros, inputs) {
 
                 localStorage.setItem(data, total);
 
-                histogramApdSvg(dadosApd);
+                histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
                 lineSvg();

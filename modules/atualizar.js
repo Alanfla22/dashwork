@@ -3,9 +3,12 @@ export function atualizarInputs (input) {
 
     const listFiles = input.files;
     var objectFiles = {};
+    var dataFiles = {};
 
     Object.values(listFiles).forEach((file) => {
         objectFiles[file.name] = URL.createObjectURL(file);
+        dataFiles[file.name] = file.lastModifiedDate.toLocaleString();        
+        
     })
 
     const base = d3.dsv(";", objectFiles["base.csv"]).then(data => {
@@ -72,7 +75,8 @@ export function atualizarInputs (input) {
         "base": base,
         "baseapd": baseapd,
         "baseguarda": baseguarda,
-        "basepaths": basepaths
+        "basepaths": basepaths,
+        "dataFiles": dataFiles
     }
 
 }       

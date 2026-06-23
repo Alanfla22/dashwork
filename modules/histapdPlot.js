@@ -9,7 +9,7 @@ const yMax = ySize - margin*2;
         
 const plotHist = d3.select("#myhistapd").append("svg");                
 
-export function histogramApdSvg (dados) {
+export function histogramApdSvg (dados, data) {
 
     plotHist.selectAll("g").remove();
 
@@ -17,6 +17,7 @@ export function histogramApdSvg (dados) {
     const result = Object.groupBy(dados, ({ Data }) => Data);
     const dadosHist = Object.entries(result);
     const parseTime = d3.utcParse("%d/%m/%Y");
+
     dadosHist.sort((a, b) => parseTime(a[0]) - parseTime(b[0]));    
 
     const svg = plotHist.append("g").attr("transform","translate(" + margin + "," + margin + ")");
@@ -30,6 +31,14 @@ export function histogramApdSvg (dados) {
     .attr("font-size", 30)
     .text("APD" )
     .attr('fill', "hsl(196 70 88)");
+
+    svg.append("g")
+    .append("text")    
+    .attr("x", 2)
+    .attr("y", 300)
+    .attr("font-size", 10)
+    .text(data)
+    .attr('fill', "hsl(196 70 88)");    
 
     svg.append("g")
     .append("text")    

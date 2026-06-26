@@ -106,9 +106,14 @@ export function filtrarForm (filtros, inputs) {
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
+
+                const datasArray = Array.from(datas);
+
+                const parseTime = d3.utcParse("%d/%m/%Y");            
+                datasArray.sort((a, b) => parseTime(a) - parseTime(b));                
                
 
-                datas.forEach((item) => {
+                datasArray.forEach((item) => {
                     field.append("input")
                     .attr("type", "checkbox")
                     .attr("name", "Data")

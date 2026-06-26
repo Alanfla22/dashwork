@@ -29,7 +29,7 @@ d3.selectAll(".super")
 
 const input = document.getElementById("myfile");
 
-input.addEventListener("change", () => {
+input.addEventListener("submit", () => {
 
     const inputs = atualizarInputs(input);
   

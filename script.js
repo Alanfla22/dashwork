@@ -31,8 +31,6 @@ const input = document.getElementById("myfile");
 
 input.addEventListener("change", () => {
 
-    location.reload();
-
     const inputs = atualizarInputs(input);
   
     filtrarForm([], inputs);

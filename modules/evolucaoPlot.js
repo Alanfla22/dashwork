@@ -71,7 +71,7 @@ export function lineSvg () {
     .append("rect")        
     .attr("x", d => xScale(parseTime(d.data)))
     .attr("y", d => d.calc < 0 ? yScale(d.total) : yScale(d.total + d.calc))
-    .attr("width", d => d.dias * (width / intervalo))
+    .attr("width", d => d.dias * (width / intervalo) - 2)
     .attr("height", d => yScale(d.total) - yScale(d.total + Math.abs(d.calc)))
     .attr("fill", d => d.calc < 0 ? "green" : "hsl(0 70 28)")
     .style("cursor", "pointer")

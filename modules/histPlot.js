@@ -43,8 +43,8 @@ export function histogramSvg (dados, data) {
 
     svg.append("g")
     .append("text")    
-    .attr("x", 380)
-    .attr("y", 0)
+    .attr("x", 375)
+    .attr("y", -2)
     .attr("font-size", 50)
     .text(`${dados.length}`)
     .attr('fill', "hsl(196 70 88)");    

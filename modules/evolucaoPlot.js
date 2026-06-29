@@ -77,8 +77,6 @@ export function lineSvg () {
     .style("cursor", "pointer")
     .style("transition", "0.3s")
     .append("title")
-    .text((d, i) => if (i < (data.length - 1)) {`${historico[i + 1].data} - ${d.total + (d.calc / 2)} média`});                  
-
-
+    .text((d, i) => i < (data.length - 1) ? `${historico[i + 1].data} - ${d.total + (d.calc / 2)} média` : unedefined);
 
 }

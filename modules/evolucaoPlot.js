@@ -77,6 +77,6 @@ export function lineSvg () {
     .style("cursor", "pointer")
     .style("transition", "0.3s")
     .append("title")
-    .text((d, i) => `${historico[i + 1].data} - ${d.total + d.calc}`);
+    .text((d, i) => `${historico[i + 1].data} - ${historico[i + 1].total}`);
 
 }

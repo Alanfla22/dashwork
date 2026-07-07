@@ -77,6 +77,6 @@ export function lineSvg () {
     .style("cursor", "pointer")
     .style("transition", "0.3s")
     .append("title")
-    .text((d, i) => &#8593 `${historico[i].data}`);
+    .text((d, i) => &#8593);
 
 }

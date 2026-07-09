@@ -3,31 +3,31 @@ import {filtrarForm} from "./modules/filtrarForm.js";
 import {atualizarInputs} from "./modules/atualizar.js";
 
 const supers = [
-    {Super: "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DE MINAS GERAIS"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DO CEARA"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DO RIO GDE DO NORTE"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DO MARANHAO"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DO PIAUI"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DE ALAGOAS"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DE SERGIPE"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DA PARAIBA"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO"},
-    {Super: "SUPERINTENDENCIA ESTADUAL DA BAHIA"}
+    "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO",
+    "SUPERINTENDENCIA ESTADUAL DE MINAS GERAIS",
+    "SUPERINTENDENCIA ESTADUAL DO CEARA",
+    "SUPERINTENDENCIA ESTADUAL DO RIO GDE DO NORTE",
+    "SUPERINTENDENCIA ESTADUAL DO MARANHAO",
+    "SUPERINTENDENCIA ESTADUAL DO PIAUI",
+    "SUPERINTENDENCIA ESTADUAL DE ALAGOAS",
+    "SUPERINTENDENCIA ESTADUAL DE SERGIPE",
+    "SUPERINTENDENCIA ESTADUAL DA PARAIBA",
+    "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO",
+    "SUPERINTENDENCIA ESTADUAL DA BAHIA"
 ];
 
 d3.selectAll(".super")
-.data(supers).enter();
-
-d3.selectAll(".super")
+.attr("id", (d,i) => supers[i])
 .attr("fill", "hsl(196 70 28)")
 .style("transition", "0.3s")
 .style("cursor", "pointer")
 .append("title")
-.text((d) => d.Super);
+.text((d,i) => supers[i]);
 
 
 const input = document.getElementById("myfile");
+
+const form = document.getElementById("testForm");
 
 input.addEventListener("change", () => {
 
@@ -35,12 +35,12 @@ input.addEventListener("change", () => {
   
     filtrarForm([], inputs);
 
-    testForm.onsubmit = (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const formData = new FormData(testForm);
-        var listaForm = [];
-        for (var obj of formData) {
-            listaForm.push(obj);
+        const formData = new FormData(form);
+        var filtros = [];
+        for (var filtro of formData) {
+            filtros.push(filtro);
         };
 
         d3.select(".superselected")
@@ -60,15 +60,15 @@ input.addEventListener("change", () => {
         d3.select("#ufselected")
         .text(" ");        
 
-        filtrarForm(listaForm, inputs);
-    };
+        filtrarForm(filtros, inputs);
+    });
 
     d3.selectAll(".super")
     .on("click", function () {
 
-        const selecao = d3.select(this)._groups[0][0].__data__;
+        const selecao = d3.select(this)._groups[0][0].id;
 
-        const filtro = [["Super", Object.values(selecao)[0]]];
+        const filtro = [["Super", selecao]];
 
         d3.select(".superselected")
         .attr("class", "super");
@@ -81,7 +81,7 @@ input.addEventListener("change", () => {
         .style("opacity", "1");
 
         d3.select("#ufselected")
-        .text(selecao.Super);            
+        .text(selecao);            
 
         filtrarForm(filtro, inputs);
 
@@ -91,5 +91,4 @@ input.addEventListener("change", () => {
 })
 
 //###########################################################
-
 

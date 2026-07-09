@@ -9,6 +9,19 @@ import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
 
+const supers = [
+    "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO",
+    "SUPERINTENDENCIA ESTADUAL DE MINAS GERAIS",
+    "SUPERINTENDENCIA ESTADUAL DO CEARA",
+    "SUPERINTENDENCIA ESTADUAL DO RIO GDE DO NORTE",
+    "SUPERINTENDENCIA ESTADUAL DO MARANHAO",
+    "SUPERINTENDENCIA ESTADUAL DO PIAUI",
+    "SUPERINTENDENCIA ESTADUAL DE ALAGOAS",
+    "SUPERINTENDENCIA ESTADUAL DE SERGIPE",
+    "SUPERINTENDENCIA ESTADUAL DA PARAIBA",
+    "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO",
+    "SUPERINTENDENCIA ESTADUAL DA BAHIA"
+];
 
 export function filtrarForm (filtros, inputs) {
 
@@ -24,6 +37,11 @@ export function filtrarForm (filtros, inputs) {
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
     const fieldTipo = d3.select("#fieldTipo");
+    const fieldSuper = d3.select("#fieldSuper");
+
+    fieldSuper.selectAll("input").remove();
+    fieldSuper.selectAll("label").remove();
+    fieldSuper.selectAll("br").remove();    
 
     field.selectAll("input").remove();
     field.selectAll("label").remove();
@@ -149,6 +167,18 @@ export function filtrarForm (filtros, inputs) {
                     fieldTipo.append("br")
                 })
 
+                supers.forEach((item) => {
+                    fieldSuper.append("input")
+                    .attr("type", "checkbox")
+                    .attr("name", "Super")
+                    .attr("value", item);
+
+                    fieldSuper.append("label")
+                    .text(item);
+
+                    fieldSuper.append("br")
+                })                
+
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date()); 
 
@@ -158,12 +188,13 @@ export function filtrarForm (filtros, inputs) {
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
                 lineSvg();
+                
 
             }
 
         );
     }    
-    );
+    );         
 
     
 };

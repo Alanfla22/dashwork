@@ -4,33 +4,13 @@ import {SelectpieapdSVG} from "./pieapdPlot.js";
 import {SelectpieSVG} from "./piePlot.js";
 import {histogramSvg} from "./histPlot.js";
 import {histogramApdSvg} from "./histapdPlot.js";
+import {estadoPlot} from "./estadoPlot.js";
 import {lineSvg} from "./evolucaoPlot.js";
 import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
 
-const supers = [
-    "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO",
-    "SUPERINTENDENCIA ESTADUAL DE MINAS GERAIS",
-    "SUPERINTENDENCIA ESTADUAL DO CEARA",
-    "SUPERINTENDENCIA ESTADUAL DO RIO GDE DO NORTE",
-    "SUPERINTENDENCIA ESTADUAL DO MARANHAO",
-    "SUPERINTENDENCIA ESTADUAL DO PIAUI",
-    "SUPERINTENDENCIA ESTADUAL DE ALAGOAS",
-    "SUPERINTENDENCIA ESTADUAL DE SERGIPE",
-    "SUPERINTENDENCIA ESTADUAL DA PARAIBA",
-    "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO",
-    "SUPERINTENDENCIA ESTADUAL DA BAHIA"
-];
-
 export function filtrarForm (filtros, inputs) {
-
-    const supersObject = {};
-
-    supers.forEach((d) => {
-
-        supersObject[d] = [];
-        })    
 
     var group = [];
     var groupApd = [];
@@ -46,12 +26,7 @@ export function filtrarForm (filtros, inputs) {
     
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
-    const fieldTipo = d3.select("#fieldTipo");
-    const fieldSuper = d3.select("#fieldSuper");
-
-    fieldSuper.selectAll("input").remove();
-    fieldSuper.selectAll("label").remove();
-    fieldSuper.selectAll("br").remove();    
+    const fieldTipo = d3.select("#fieldTipo");  
 
     field.selectAll("input").remove();
     field.selectAll("label").remove();
@@ -133,31 +108,6 @@ export function filtrarForm (filtros, inputs) {
                 groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
                 groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
 
-                Object.keys(groupSuper).forEach((key) => {
-                    supersObject[key] = Object.values(supersObject[key]).concat(groupSuper[key])
-                })
-
-                Object.keys(groupApdSuper).forEach((key) => {
-                    supersObject[key] = Object.values(supersObject[key]).concat(groupApdSuper[key])
-                })
-
-                d3.selectAll(".super")
-                .select("title").remove();
-
-                const maximo = d3.max(Object.values(supersObject), (d) => d.length);                
-                const noteList = d3.selectAll(".super")._groups[0];
-
-                for (var i = 0; i < noteList.length; i++) {
-
-                    var nomeSuper = noteList[i].id;
-                    var quantidade = Object.values(supersObject[nomeSuper]).length;
-                 
-                    d3.select(noteList[i])
-                    .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
-                    .append("title")
-                    .text(nomeSuper + " - " + quantidade);
-                }
-
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
@@ -201,19 +151,7 @@ export function filtrarForm (filtros, inputs) {
                     .text(item);
 
                     fieldTipo.append("br")
-                })
-
-                supers.forEach((item) => {
-                    fieldSuper.append("input")
-                    .attr("type", "checkbox")
-                    .attr("name", "Super")
-                    .attr("value", item);
-
-                    fieldSuper.append("label")
-                    .text(item);
-
-                    fieldSuper.append("br")
-                })                
+                })             
 
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date()); 
@@ -223,6 +161,7 @@ export function filtrarForm (filtros, inputs) {
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
+                estadoPlot(groupSuper, groupApdSuper);
                 lineSvg();
                 
 

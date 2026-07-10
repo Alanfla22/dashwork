@@ -25,6 +25,13 @@ const supers = [
 
 export function filtrarForm (filtros, inputs) {
 
+    const supersObject = {};
+
+    supers.forEach((d) => {
+
+        supersObject[d] = [];
+        })    
+
     var group = [];
     var groupApd = [];
 
@@ -33,6 +40,9 @@ export function filtrarForm (filtros, inputs) {
     
     var groupTipo = [];
     var groupApdTipo = [];
+
+    var groupSuper = [];
+    var groupApdSuper = [];
     
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
@@ -88,7 +98,8 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                
+                groupSuper = Object.groupBy(values, (item) => item["Super"]);
+              
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
                 SelectpieSVG(dados);
@@ -120,11 +131,34 @@ export function filtrarForm (filtros, inputs) {
                 groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupApdSuper = Object.groupBy(values, (item) => item["Super"]);
+
+                Object.keys(groupSuper).forEach((key) => {
+                    supersObject[key] = Object.values(supersObject[key]).concat(groupSuper[key])
+                })
+
+                Object.keys(groupApdSuper).forEach((key) => {
+                    supersObject[key] = Object.values(supersObject[key]).concat(groupApdSuper[key])
+                })
+
+                const maximo = d3.max(Object.values(supersObject), (d) => d.length);                
+                const noteList = d3.selectAll(".super")._groups[0];
+
+                for (var i = 0; i < noteList.length; i++) {
+
+                    var nomeSuper = noteList[i].id;
+                    var quantidade = Object.values(supersObject[nomeSuper]).length;
+
+                    d3.select(noteList[i])
+                    .attr("fill", `hsl(196 70 ${Math.floor((100 * quantidade) / maximo)})`)
+                    .append("title")
+                    .text(nomeSuper + " - " + quantidade);
+                }
 
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
-
+                
                 const datasArray = Array.from(datas);
 
                 const parseTime = d3.utcParse("%d/%m/%Y");            

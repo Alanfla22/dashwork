@@ -18,11 +18,8 @@ const supers = [
 
 d3.selectAll(".super")
 .attr("id", (d,i) => supers[i])
-.attr("fill", "hsl(196 70 28)")
 .style("transition", "0.3s")
-.style("cursor", "pointer")
-.append("title")
-.text((d,i) => supers[i]);
+.style("cursor", "pointer");
 
 
 const input = document.getElementById("myfile");

@@ -98,7 +98,7 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupSuper = Object.groupBy(values, (item) => item["Super"]);
+                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
               
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
@@ -131,7 +131,7 @@ export function filtrarForm (filtros, inputs) {
                 groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupApdSuper = Object.groupBy(values, (item) => item["Super"]);
+                groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
 
                 Object.keys(groupSuper).forEach((key) => {
                     supersObject[key] = Object.values(supersObject[key]).concat(groupSuper[key])
@@ -141,6 +141,9 @@ export function filtrarForm (filtros, inputs) {
                     supersObject[key] = Object.values(supersObject[key]).concat(groupApdSuper[key])
                 })
 
+                d3.selectAll(".super")
+                .select("title").remove();
+
                 const maximo = d3.max(Object.values(supersObject), (d) => d.length);                
                 const noteList = d3.selectAll(".super")._groups[0];
 
@@ -148,9 +151,9 @@ export function filtrarForm (filtros, inputs) {
 
                     var nomeSuper = noteList[i].id;
                     var quantidade = Object.values(supersObject[nomeSuper]).length;
-
+                 
                     d3.select(noteList[i])
-                    .attr("fill", `hsl(196 70 ${Math.floor((100 * quantidade) / maximo)})`)
+                    .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
                     .append("title")
                     .text(nomeSuper + " - " + quantidade);
                 }
@@ -162,8 +165,7 @@ export function filtrarForm (filtros, inputs) {
                 const datasArray = Array.from(datas);
 
                 const parseTime = d3.utcParse("%d/%m/%Y");            
-                datasArray.sort((a, b) => parseTime(a) - parseTime(b));                
-               
+                datasArray.sort((a, b) => parseTime(a) - parseTime(b)); 
 
                 datasArray.forEach((item) => {
                     field.append("input")

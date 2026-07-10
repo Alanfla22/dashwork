@@ -14,21 +14,7 @@ const supers = [
     "SUPERINTENDENCIA ESTADUAL DA PARAIBA",
     "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO",
     "SUPERINTENDENCIA ESTADUAL DA BAHIA"
-];
-
-const fieldSuper = d3.select("#fieldSuper");
-
-supers.forEach((item) => {
-    fieldSuper.append("input")
-    .attr("type", "checkbox")
-    .attr("name", "Super")
-    .attr("value", item);
-
-    fieldSuper.append("label")
-    .text(item);
-
-    fieldSuper.append("br")
-})   
+];  
 
 d3.selectAll(".super")
 .attr("id", (d,i) => supers[i])

@@ -26,7 +26,8 @@ export function filtrarForm (filtros, inputs) {
     
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
-    const fieldTipo = d3.select("#fieldTipo");  
+    const fieldTipo = d3.select("#fieldTipo");
+    const fieldSuper = d3.select("#fieldSuper");
 
     field.selectAll("input").remove();
     field.selectAll("label").remove();
@@ -39,6 +40,10 @@ export function filtrarForm (filtros, inputs) {
     fieldTipo.selectAll("input").remove();
     fieldTipo.selectAll("label").remove();
     fieldTipo.selectAll("br").remove();
+
+    fieldSuper.selectAll("input").remove();
+    fieldSuper.selectAll("label").remove();
+    fieldSuper.selectAll("br").remove();    
     
     const base = inputs.base;
     const baseapd = inputs.baseapd;
@@ -151,7 +156,31 @@ export function filtrarForm (filtros, inputs) {
                     .text(item);
 
                     fieldTipo.append("br")
-                })             
+                })
+
+                const noteList = d3.selectAll(".super")._groups[0];
+
+                const supersList = [];
+
+                for (var i = 0; i < noteList.length; i++) {
+
+                    supersList.push(noteList[i].id);
+                    
+                }                  
+                
+                const fieldSuper = d3.select("#fieldSuper");
+
+                supersList.forEach((item) => {
+                    fieldSuper.append("input")
+                    .attr("type", "checkbox")
+                    .attr("name", "Super")
+                    .attr("value", item);
+
+                    fieldSuper.append("label")
+                    .text(item);
+
+                    fieldSuper.append("br")
+                }) 
 
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date()); 

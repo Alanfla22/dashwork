@@ -38,7 +38,7 @@ export function estadoPlot (groupSuper, groupApdSuper) {
         d3.select(noteList[i])
         .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
         .append("title")
-        .text("estado");
+        .text(this.id);
     }
 
 }                

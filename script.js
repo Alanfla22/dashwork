@@ -2,26 +2,6 @@
 import {filtrarForm} from "./modules/filtrarForm.js";
 import {atualizarInputs} from "./modules/atualizar.js";
 
-const supers = [
-    "SUPERINTENDENCIA ESTADUAL DO ESPIRITO SANTO",
-    "SUPERINTENDENCIA ESTADUAL DE MINAS GERAIS",
-    "SUPERINTENDENCIA ESTADUAL DO CEARA",
-    "SUPERINTENDENCIA ESTADUAL DO RIO GDE DO NORTE",
-    "SUPERINTENDENCIA ESTADUAL DO MARANHAO",
-    "SUPERINTENDENCIA ESTADUAL DO PIAUI",
-    "SUPERINTENDENCIA ESTADUAL DE ALAGOAS",
-    "SUPERINTENDENCIA ESTADUAL DE SERGIPE",
-    "SUPERINTENDENCIA ESTADUAL DA PARAIBA",
-    "SUPERINTENDENCIA ESTADUAL DE PERNAMBUCO",
-    "SUPERINTENDENCIA ESTADUAL DA BAHIA"
-];  
-
-d3.selectAll(".super")
-.attr("id", (d,i) => supers[i])
-.style("transition", "0.3s")
-.style("cursor", "pointer");
-
-
 const input = document.getElementById("myfile");
 
 const form = document.getElementById("testForm");

@@ -4,6 +4,8 @@ const mapa = d3.select("#mapa");
 export function estadoPlot (groupSuper, groupApdSuper) {
 
     mapa.selectAll(".super")
+    .style("transition", "0.3s")
+    .style("cursor", "pointer")
     .select("title").remove();
 
     const noteList = mapa.selectAll(".super")._groups[0];
@@ -36,7 +38,7 @@ export function estadoPlot (groupSuper, groupApdSuper) {
         d3.select(noteList[i])
         .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
         .append("title")
-        .text(nomeSuper + " - " + quantidade);
+        .text(this.parentNode.id);
     }
 
 }                

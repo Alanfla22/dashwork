@@ -219,15 +219,6 @@ path:hover {
     fill: hsl(196 70 88);
 }
 
-circle {
-    opacity: 0;
-    transition: 0.3s;
-}
-
-circle:hover {
-    opacity: 1;
-}
-
 /* Tabela de Dados */
 .tabela {
     height: 100%;

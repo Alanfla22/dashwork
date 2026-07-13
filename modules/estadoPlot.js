@@ -4,7 +4,8 @@ const mapa = d3.select("#mapa");
 export function estadoPlot (groupSuper, groupApdSuper) {
 
     mapa.selectAll(".super")
-    .style("opacity", "1")    
+    .style("opacity", "1")
+    .style("transition", "0.3s")
     .select("title").remove();
 
     const superList = mapa.selectAll(".super")._groups[0];

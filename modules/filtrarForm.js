@@ -63,7 +63,6 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {
 
-                totalBase = values.length;
                 const dados = filtrar(values, guarda, filtros);
 
                 const buttonTable = d3.select("#defaultOpen");
@@ -78,9 +77,9 @@ export function filtrarForm (filtros, inputs) {
                        
                 }) 
                 
-                group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
-                groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                group = Object.keys(Object.groupBy(dados, (item) => item["Data"]));
+                groupTarefa = Object.keys(Object.groupBy(dados, (item) => item["Tarefa"]));
+                groupTipo = Object.keys(Object.groupBy(dados, (item) => item["Tipo"]));
                 demandaSuper = Object.groupBy(dados, (item) => item["Super"]);
                 groupSuper = Object.keys(demandaSuper);
               
@@ -97,8 +96,6 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {
 
-                totalBaseapd = values.length;
-
                 const dadosApd = filtrar(values, guarda, filtros);            
                 const buttonTableApd = d3.select("#apdOpen");
 
@@ -112,10 +109,10 @@ export function filtrarForm (filtros, inputs) {
                        
                 })                 
 
-                groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
-                groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                demandaApdSuper = Object.groupBy(dados, (item) => item["Super"]);
+                groupApd = Object.keys(Object.groupBy(dadosApd, (item) => item["Data"]));
+                groupApdTarefa = Object.keys(Object.groupBy(dadosApd, (item) => item["Tarefa"]));
+                groupApdTipo = Object.keys(Object.groupBy(dadosApd, (item) => item["Tipo"]));
+                demandaApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
                 groupApdSuper = Object.keys(demandaApdSuper);
 
                 const datas = new Set(group.concat(groupApd));

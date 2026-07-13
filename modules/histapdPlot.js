@@ -99,9 +99,6 @@ export function histogramApdSvg (dados, data) {
                     d3.select(this)
                     .style("opacity", "1");
                     
-                    d3.selectAll(".superselected")
-                    .style("opacity", "1");    
-
                     const selecao = d3.select(this)._groups[0][0].__data__[0];
                     const result = dados.filter((d) => d["Data"] == selecao);
 

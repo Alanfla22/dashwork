@@ -4,18 +4,17 @@ const mapa = d3.select("#mapa");
 export function estadoPlot (groupSuper, groupApdSuper) {
 
     mapa.selectAll(".super")
-    .style("opacity", "1")    
     .select("title").remove();
 
-    const noteList = mapa.selectAll(".super")._groups[0];
+    const superList = mapa.selectAll(".super")._groups[0];
 
     const supersObject = {};
 
-    for (var i = 0; i < noteList.length; i++) {
+    superList.forEach((node) => {
 
-        supersObject[noteList[i].id] = [];
+        supersObject[node.id] = [];
         
-    }  
+    })  
 
     Object.keys(groupSuper).forEach((key) => {
         supersObject[key] = Object.values(supersObject[key]).concat(groupSuper[key])
@@ -25,19 +24,19 @@ export function estadoPlot (groupSuper, groupApdSuper) {
         supersObject[key] = Object.values(supersObject[key]).concat(groupApdSuper[key])
     })
 
-    const maximo = d3.max(Object.values(supersObject), (d) => d.length);  
 
-    for (var i = 0; i < noteList.length; i++) {
+    const maximo = d3.max(Object.values(supersObject), (d) => d.length);                
+    
 
-        var nomeSuper = noteList[i].id;
+    superList.forEach((node) => {
+
+        var nomeSuper = node.id;
         var quantidade = Object.values(supersObject[nomeSuper]).length;
         
-        d3.select(noteList[i])
+        d3.select(node)
         .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
-        .style("transition", "0.3s")
-        .style("cursor", "pointer")
         .append("title")
         .text(nomeSuper + " - " + quantidade);
-    }
+    })
 
 }                

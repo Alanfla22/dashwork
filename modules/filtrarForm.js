@@ -85,7 +85,7 @@ export function filtrarForm (filtros, inputs) {
                 groupSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
                 demandaSuper = Object.groupBy(dados, (item) => item["Super"]);
               
-                histogramSvg(dados, dataFiles["base.csv"]);   
+                histogramSvg(dados);   
                 pieSvg(dados, "Tipo");
                 SelectpieSVG(dados);
 
@@ -183,7 +183,7 @@ export function filtrarForm (filtros, inputs) {
 
                 localStorage.setItem(data, total);
 
-                histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
+                histogramApdSvg(dadosApd);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
                 estadoPlot(demandaSuper, demandaApdSuper);

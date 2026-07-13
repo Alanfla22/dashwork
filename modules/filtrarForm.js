@@ -77,11 +77,11 @@ export function filtrarForm (filtros, inputs) {
                        
                 }) 
                 
-                group = Object.keys(Object.groupBy(dados, (item) => item["Data"]));
-                groupTarefa = Object.keys(Object.groupBy(dados, (item) => item["Tarefa"]));
-                groupTipo = Object.keys(Object.groupBy(dados, (item) => item["Tipo"]));
+                group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
+                groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
+                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));               
+                groupSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
                 demandaSuper = Object.groupBy(dados, (item) => item["Super"]);
-                groupSuper = Object.keys(demandaSuper);
               
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
@@ -109,11 +109,12 @@ export function filtrarForm (filtros, inputs) {
                        
                 })                 
 
-                groupApd = Object.keys(Object.groupBy(dadosApd, (item) => item["Data"]));
-                groupApdTarefa = Object.keys(Object.groupBy(dadosApd, (item) => item["Tarefa"]));
-                groupApdTipo = Object.keys(Object.groupBy(dadosApd, (item) => item["Tipo"]));
+                groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
+                groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
+                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupApdSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
                 demandaApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
-                groupApdSuper = Object.keys(demandaApdSuper);
+                
 
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));

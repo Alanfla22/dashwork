@@ -24,9 +24,7 @@ export function estadoPlot (groupSuper, groupApdSuper) {
         supersObject[key] = Object.values(supersObject[key]).concat(groupApdSuper[key])
     })
 
-
-    const maximo = d3.max(Object.values(supersObject), (d) => d.length);                
-    
+    const maximo = d3.max(Object.values(supersObject), (d) => d.length);  
 
     for (var i = 0; i < noteList.length; i++) {
 
@@ -37,7 +35,6 @@ export function estadoPlot (groupSuper, groupApdSuper) {
         .attr("fill", `hsl(196 70 ${Math.floor((98 * (quantidade)) / maximo)})`)
         .style("transition", "0.3s")
         .style("cursor", "pointer")
-        .style("opacity", "1")    
         .append("title")
         .text(nomeSuper + " - " + quantidade);
     }

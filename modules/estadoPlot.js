@@ -6,6 +6,7 @@ export function estadoPlot (groupSuper, groupApdSuper) {
     mapa.selectAll(".super")
     .style("opacity", "1")
     .style("transition", "0.3s")
+    .style("cursor", "pointer")
     .select("title").remove();
 
     const superList = mapa.selectAll(".super")._groups[0];

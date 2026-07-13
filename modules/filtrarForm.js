@@ -63,6 +63,8 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {
 
+                totalBase = values.length;
+
                 const dados = filtrar(values, guarda, filtros);
 
                 const buttonTable = d3.select("#defaultOpen");
@@ -96,6 +98,8 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {
 
+                totalBaseapd = values.length;
+                
                 const dadosApd = filtrar(values, guarda, filtros);            
                 const buttonTableApd = d3.select("#apdOpen");
 

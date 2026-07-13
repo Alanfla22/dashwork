@@ -164,8 +164,7 @@ export function filtrarForm (filtros, inputs) {
                     fieldTipo.append("br")
                 })
 
-
-                supersList.forEach((item) => {
+                supers.forEach((item) => {
                     fieldSuper.append("input")
                     .attr("type", "checkbox")
                     .attr("name", "Super")

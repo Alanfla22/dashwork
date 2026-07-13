@@ -23,6 +23,9 @@ export function filtrarForm (filtros, inputs) {
 
     var groupSuper = [];
     var groupApdSuper = [];
+
+    var demandaSuper = [];
+    var demandaApdSuper = [];
     
     const field = d3.select("#fieldData");
     const fieldTarefa = d3.select("#fieldTarefa");
@@ -78,7 +81,8 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
+                demandaSuper = Object.groupBy(dados, (item) => item["Super"]);
+                groupSuper = Object.keys(demandaSuper);
               
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
@@ -111,11 +115,13 @@ export function filtrarForm (filtros, inputs) {
                 groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
+                demandaApdSuper = Object.groupBy(dados, (item) => item["Super"]);
+                groupApdSuper = Object.keys(demandaApdSuper);
 
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
+                const supers = new Set(groupSuper.concat(groupApdSuper));
                 
                 const datasArray = Array.from(datas);
 
@@ -158,17 +164,6 @@ export function filtrarForm (filtros, inputs) {
                     fieldTipo.append("br")
                 })
 
-                const noteList = d3.selectAll(".super")._groups[0];
-
-                const supersList = [];
-
-                for (var i = 0; i < noteList.length; i++) {
-
-                    supersList.push(noteList[i].id);
-                    
-                }                  
-                
-                const fieldSuper = d3.select("#fieldSuper");
 
                 supersList.forEach((item) => {
                     fieldSuper.append("input")
@@ -190,7 +185,7 @@ export function filtrarForm (filtros, inputs) {
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
-                estadoPlot(groupSuper, groupApdSuper);
+                estadoPlot(demandaSuper, demandaApdSuper);
                 lineSvg();
                 
 

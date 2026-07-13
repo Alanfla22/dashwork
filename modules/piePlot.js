@@ -104,9 +104,6 @@ export function pieSvg (dados, option) {
 
             d3.selectAll("rect")
             .style("opacity", "0.2");
-
-            d3.selectAll(".superselected")
-            .style("opacity", "1");            
             
             d3.select(this)
             .style("opacity", "1");

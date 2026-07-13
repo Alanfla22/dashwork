@@ -28,6 +28,8 @@ input.addEventListener("change", () => {
         d3.select("#uf")
         .text("_");
 
+        filtrarForm(filtros, inputs);
+
     });
 
 })

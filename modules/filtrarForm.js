@@ -13,6 +13,12 @@ import {formulario} from "./formulario.js"
 
 export function filtrarForm (filtros, inputs) {
 
+    const base = inputs.base;
+    const baseapd = inputs.baseapd;
+    const baseguarda = inputs.baseguarda;
+    const basepaths = inputs.basepaths;
+    const dataFiles = inputs.dataFiles;
+    
     var group = [];
     var groupApd = [];
 
@@ -21,12 +27,6 @@ export function filtrarForm (filtros, inputs) {
     
     var groupTipo = [];
     var groupApdTipo = [];
-    
-    const base = inputs.base;
-    const baseapd = inputs.baseapd;
-    const baseguarda = inputs.baseguarda;
-    const basepaths = inputs.basepaths;
-    const dataFiles = inputs.dataFiles;
 
     var dados = [];
     var dadosApd = [];

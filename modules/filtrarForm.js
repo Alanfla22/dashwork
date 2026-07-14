@@ -9,6 +9,7 @@ import {lineSvg} from "./evolucaoPlot.js";
 import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
+import {formulario} from "./formulario.js"
 
 export function filtrarForm (filtros, inputs) {
 
@@ -22,31 +23,8 @@ export function filtrarForm (filtros, inputs) {
     var groupApdTipo = [];
 
     var groupSuper = [];
-    var groupApdSuper = [];
-
-    var demandaSuper = [];
-    var demandaApdSuper = [];
-    
-    const field = d3.select("#fieldData");
-    const fieldTarefa = d3.select("#fieldTarefa");
-    const fieldTipo = d3.select("#fieldTipo");
-    const fieldSuper = d3.select("#fieldSuper");
-
-    field.selectAll("input").remove();
-    field.selectAll("label").remove();
-    field.selectAll("br").remove();
-    
-    fieldTarefa.selectAll("input").remove();
-    fieldTarefa.selectAll("label").remove();
-    fieldTarefa.selectAll("br").remove();
-    
-    fieldTipo.selectAll("input").remove();
-    fieldTipo.selectAll("label").remove();
-    fieldTipo.selectAll("br").remove();
-
-    fieldSuper.selectAll("input").remove();
-    fieldSuper.selectAll("label").remove();
-    fieldSuper.selectAll("br").remove();    
+    var groupApdSuper = [];   
+  
     
     const base = inputs.base;
     const baseapd = inputs.baseapd;
@@ -62,9 +40,7 @@ export function filtrarForm (filtros, inputs) {
         base.then(       
 
             function (values) {
-
-                totalBase = values.length;
-
+                
                 const dados = filtrar(values, guarda, filtros);
 
                 const buttonTable = d3.select("#defaultOpen");
@@ -79,11 +55,11 @@ export function filtrarForm (filtros, inputs) {
                        
                 }) 
                 
+                totalBase = values.length;
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));               
-                groupSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
-                demandaSuper = Object.groupBy(dados, (item) => item["Super"]);
+                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
               
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
@@ -96,10 +72,8 @@ export function filtrarForm (filtros, inputs) {
 
         baseapd.then(
 
-            function (values) {
+            function (values) {                
 
-                totalBaseapd = values.length;
-                
                 const dadosApd = filtrar(values, guarda, filtros);            
                 const buttonTableApd = d3.select("#apdOpen");
 
@@ -113,80 +87,25 @@ export function filtrarForm (filtros, inputs) {
                        
                 })                 
 
+                totalBaseapd = values.length;    
                 groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupApdSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
-                demandaApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
-                
+                groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
 
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
-                const tipos = new Set(groupTipo.concat(groupApdTipo));
-                const supers = new Set(groupSuper.concat(groupApdSuper));
-                
-                const datasArray = Array.from(datas);
-
-                const parseTime = d3.utcParse("%d/%m/%Y");            
-                datasArray.sort((a, b) => parseTime(a) - parseTime(b)); 
-
-                datasArray.forEach((item) => {
-                    field.append("input")
-                    .attr("type", "checkbox")
-                    .attr("name", "Data")
-                    .attr("value", item);
-
-                    field.append("label")
-                    .text(item);
-
-                    field.append("br")
-                })
-
-                tarefas.forEach((item) => {
-                    fieldTarefa.append("input")
-                    .attr("type", "checkbox")
-                    .attr("name", "Tarefa")
-                    .attr("value", item);
-
-                    fieldTarefa.append("label")
-                    .text(item);
-
-                    fieldTarefa.append("br")
-                })
-                
-                tipos.forEach((item) => {
-                    fieldTipo.append("input")
-                    .attr("type", "checkbox")
-                    .attr("name", "Tipo")
-                    .attr("value", item);
-
-                    fieldTipo.append("label")
-                    .text(item);
-
-                    fieldTipo.append("br")
-                })
-
-                supers.forEach((item) => {
-                    fieldSuper.append("input")
-                    .attr("type", "checkbox")
-                    .attr("name", "Super")
-                    .attr("value", item);
-
-                    fieldSuper.append("label")
-                    .text(item);
-
-                    fieldSuper.append("br")
-                }) 
-
+                const tipos = new Set(groupTipo.concat(groupApdTipo));              
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date()); 
 
                 localStorage.setItem(data, total);
 
+                formulario(datas, tarefas, tipos); 
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
-                estadoPlot(demandaSuper, demandaApdSuper);
+                estadoPlot(groupSuper, groupApdSuper);
                 lineSvg();
                 
 

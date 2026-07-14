@@ -32,6 +32,9 @@ export function filtrarForm (filtros, inputs) {
     const basepaths = inputs.basepaths;
     const dataFiles = inputs.dataFiles;
 
+    var dados = [];
+    var dadosApd = [];
+
     var totalBase = 0;
     var totalBaseapd = 0;
     
@@ -41,9 +44,20 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {
                 
-                const dados = filtrar(values, guarda, filtros);
+                dados = filtrar(values, guarda, filtros);
+                
+                totalBase = values.length;
+                group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
+                groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
+                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
 
                 const buttonTable = d3.select("#defaultOpen");
+              
+                histogramSvg(dados, dataFiles["base.csv"]);   
+                pieSvg(dados, "Tipo");
+                SelectpieSVG(dados);
+                
 
                 buttonTable.on("click", function () {
                     tabulate(dados, basepaths);
@@ -53,17 +67,7 @@ export function filtrarForm (filtros, inputs) {
                     d3.select("#apdOpen").style("background-color", "hsl(196 70 28)")
                     .style("color", "white");
                        
-                }) 
-                
-                totalBase = values.length;
-                group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
-                groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
-              
-                histogramSvg(dados, dataFiles["base.csv"]);   
-                pieSvg(dados, "Tipo");
-                SelectpieSVG(dados);
+                })                 
 
                 buttonTable.node().click();
 
@@ -74,8 +78,28 @@ export function filtrarForm (filtros, inputs) {
 
             function (values) {                
 
-                const dadosApd = filtrar(values, guarda, filtros);            
-                const buttonTableApd = d3.select("#apdOpen");
+                dadosApd = filtrar(values, guarda, filtros);
+
+                totalBaseapd = values.length;    
+                groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
+                groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
+                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));                
+
+                const datas = new Set(group.concat(groupApd));
+                const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
+                const tipos = new Set(groupTipo.concat(groupApdTipo));              
+                const total = totalBase + totalBaseapd;
+                const data = d3.utcFormat("%d/%m/%Y")(new Date());
+                const buttonTableApd = d3.select("#apdOpen"); 
+
+                localStorage.setItem(data, total);
+
+                formulario(datas, tarefas, tipos); 
+                histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
+                pieapdSvg(dadosApd, "Tipo IC");
+                SelectpieapdSVG(dadosApd);
+                estadoPlot(dados, dadosApd);
+                lineSvg();                
 
                 buttonTableApd.on("click", function () {
                     tabulateApd(dadosApd, basepaths);
@@ -86,27 +110,6 @@ export function filtrarForm (filtros, inputs) {
                     .style("color", "white");
                        
                 })                 
-
-                totalBaseapd = values.length;    
-                groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
-                groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);
-
-                const datas = new Set(group.concat(groupApd));
-                const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
-                const tipos = new Set(groupTipo.concat(groupApdTipo));              
-                const total = totalBase + totalBaseapd;
-                const data = d3.utcFormat("%d/%m/%Y")(new Date()); 
-
-                localStorage.setItem(data, total);
-
-                formulario(datas, tarefas, tipos); 
-                histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
-                pieapdSvg(dadosApd, "Tipo IC");
-                SelectpieapdSVG(dadosApd);
-                estadoPlot(groupSuper, groupApdSuper);
-                lineSvg();
                 
 
             }

@@ -28,6 +28,9 @@ export function filtrarForm (filtros, inputs) {
     var groupTipo = [];
     var groupApdTipo = [];
 
+    var groupSuper = [];
+    var groupApdSuper = [];
+
     var dados = [];
     var dadosApd = [];
 
@@ -46,6 +49,7 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
 
                 const buttonTable = d3.select("#defaultOpen");
               
@@ -78,18 +82,21 @@ export function filtrarForm (filtros, inputs) {
                 totalBaseapd = values.length;    
                 groupApd = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupApdTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
-                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));                
+                groupApdTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
+                groupApdSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));                
 
                 const datas = new Set(group.concat(groupApd));
                 const tarefas = new Set(groupTarefa.concat(groupApdTarefa));
-                const tipos = new Set(groupTipo.concat(groupApdTipo));              
+                const tipos = new Set(groupTipo.concat(groupApdTipo));
+                const supers = new Set(groupSuper.concat(groupApdSuper)); 
+
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date());
                 const buttonTableApd = d3.select("#apdOpen"); 
 
                 localStorage.setItem(data, total);
 
-                formulario(datas, tarefas, tipos); 
+                formulario(datas, tarefas, tipos, supers); 
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);

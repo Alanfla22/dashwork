@@ -21,10 +21,6 @@ export function filtrarForm (filtros, inputs) {
     
     var groupTipo = [];
     var groupApdTipo = [];
-
-    var groupSuper = [];
-    var groupApdSuper = [];   
-  
     
     const base = inputs.base;
     const baseapd = inputs.baseapd;

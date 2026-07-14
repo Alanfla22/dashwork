@@ -46,7 +46,6 @@ export function filtrarForm (filtros, inputs) {
                 group = Object.keys(Object.groupBy(values, (item) => item["Data"]));
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
-                groupSuper = Object.groupBy(dados, (item) => item["Super"]);
 
                 const buttonTable = d3.select("#defaultOpen");
               

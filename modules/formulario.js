@@ -3,9 +3,8 @@ const field = d3.select("#fieldData");
 const fieldTarefa = d3.select("#fieldTarefa");
 const fieldTipo = d3.select("#fieldTipo");
 const fieldSuper = d3.select("#fieldSuper");
-const noteList = d3.selectAll(".super")._groups[0];
 
-export function formulario (datas, tarefas, tipos) {
+export function formulario (datas, tarefas, tipos, supers) {
 
 
     field.selectAll("input").remove();
@@ -65,15 +64,7 @@ export function formulario (datas, tarefas, tipos) {
         fieldTipo.append("br")
 
     }) 
-
-    const supers = [];
-
-    noteList.forEach((node) => {
-
-        supers.push(node.id);
-
-    })     
-    
+   
     supers.forEach((item) => {
         fieldSuper.append("input")
         .attr("type", "checkbox")

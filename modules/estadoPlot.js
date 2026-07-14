@@ -1,10 +1,13 @@
 
 const mapa = d3.select("#mapa");
 
-export function estadoPlot (groupSuper, groupApdSuper) {
+export function estadoPlot (dados, dadosApd) {
 
     mapa.selectAll(".super")
     .select("title").remove();
+
+    const groupSuper = Object.groupBy(dados, (item) => item["Super"]);
+    const groupApdSuper = Object.groupBy(dadosApd, (item) => item["Super"]);    
 
     const superList = mapa.selectAll(".super")._groups[0];
 

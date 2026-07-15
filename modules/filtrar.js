@@ -11,7 +11,7 @@ export function filtrar (values, guarda, filtros) {
         return values;
     } else {
 
-        var filtrosObject = {};
+        const filtrosObject = {};
 
         filtros.forEach((item) => {
 

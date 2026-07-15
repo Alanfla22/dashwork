@@ -11,47 +11,47 @@ export function filtrar (values, guarda, filtros) {
         return values;
     } else {
 
-        var objeto = {};
+        var filtrosObject = {};
 
         filtros.forEach((item) => {
 
-            objeto[item[0]] = [];
+            if (!filtrosObject[item[0]]) {
+
+                filtrosObject[item[0]] = [];
+            }            
+
+            filtrosObject[item[0]] = Object.values(filtrosObject[item[0]]).concat([item[1]]);
 
         })
 
-        filtros.forEach((item) => {
-
-            objeto[item[0]] = Object.values(objeto[item[0]]).concat([item[1]]);
-
-        })
-
-        const selecoes = Object.entries(objeto);
-        const quantidade = selecoes.length;
-
-        const geral = [];
+        const selecoes = Object.entries(filtrosObject);
+        const quantSelecoes = selecoes.length;
+        const valuesFiltrados = [];
 
         values.forEach((item) => {
             var i = 0;
             selecoes.forEach((x) => {
                 var variavel = item[x[0]];
-                if (x[1].includes(variavel)) {
-                    i = i + 1;                
+                var filtro = x[1];
+                if (filtro.includes(variavel)) {
+                    i++;                
                 }
 
-                if (i == quantidade) {
-                    geral.push(item);
+                if (i == quantSelecoes) {
+                    valuesFiltrados.push(item);
                 }
 
             })        
 
         }) 
 
-        geral.forEach((item) => {
+        valuesFiltrados.forEach((item) => {
             item["Guarda"] = listGuarda.includes(item["Nome"]) ? "SIM" : "NAO";
         })
 
-        return geral; 
+        return valuesFiltrados; 
 
-   }
+
+    }
 
 };  

@@ -2,7 +2,7 @@ const width = 450, height = 130, margin = {top:20, right:20, bottom:40, left:40}
 
 const plotEvol = d3.select("#myevolution").append("svg");
 
-export function lineSvg () {
+export function lineSvg (dias) {
     
     plotEvol.selectAll("g").remove();
 
@@ -21,12 +21,11 @@ export function lineSvg () {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    const d = new Date();
-    d.setDate(d.getDate() - 10);    
+    const dataInicio = new Date();        
 
     historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));
 
-    historico = historico.filter((item) => parseTime(item.data) > d); 
+    historico = historico.filter((item) => parseTime(item.data) > dataInicio.setDate(dataInicio.getDate() - dias)); 
    
     historico.map((value, index, array) => {
 

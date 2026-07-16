@@ -26,7 +26,7 @@ export function lineSvg () {
 
     historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));
 
-    historico.filter((item) => parseTime(item.data) > d); 
+    historico = historico.filter((item) => parseTime(item.data) > d); 
    
     historico.map((value, index, array) => {
 

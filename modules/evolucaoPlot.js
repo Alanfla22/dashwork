@@ -21,11 +21,12 @@ export function lineSvg (dias) {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    const dataInicio = new Date();        
+    const dataInicio = new Date();
+    dataInicio.setDate(dataInicio.getDate() - dias);
 
     historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));
 
-    historico = historico.filter((item) => parseTime(item.data) > dataInicio.setDate(dataInicio.getDate() - dias)); 
+    historico = historico.filter((item) => parseTime(item.data) > dataInicio); 
    
     historico.map((value, index, array) => {
 

@@ -21,8 +21,15 @@ export function lineSvg () {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
+    const parseTime = d3.utcParse("%d/%m/%Y");
+
+    const d = new Date();
+    d.setDate(d.getDate() - 10);    
+
     historico.sort((a, b) => parseTime(a.data) - parseTime(b.data));
-    
+
+    historico.filter((item) => parseTime(item.data) > d); 
+   
     historico.map((value, index, array) => {
 
         if (index < array.length - 1) {

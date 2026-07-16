@@ -101,7 +101,7 @@ export function filtrarForm (filtros, inputs) {
                 pieapdSvg(dadosApd, "Tipo IC");
                 SelectpieapdSVG(dadosApd);
                 estadoPlot(dados, dadosApd);
-                lineSvg();                
+                lineSvg(15);                
 
                 buttonTableApd.on("click", function () {
                     tabulateApd(dadosApd, basepaths);

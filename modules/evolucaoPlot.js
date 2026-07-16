@@ -21,8 +21,6 @@ export function lineSvg () {
 
     const parseTime = d3.utcParse("%d/%m/%Y");
 
-    const parseTime = d3.utcParse("%d/%m/%Y");
-
     const d = new Date();
     d.setDate(d.getDate() - 10);    
 

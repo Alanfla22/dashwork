@@ -10,6 +10,7 @@ import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
 import {formulario} from "./formulario.js"
+import {buttonApd, buttonS522} from "./buttons.js";
 
 export function filtrarForm (filtros, inputs) {
 
@@ -50,25 +51,11 @@ export function filtrarForm (filtros, inputs) {
                 groupTarefa = Object.keys(Object.groupBy(values, (item) => item["Tarefa"]));
                 groupTipo = Object.keys(Object.groupBy(values, (item) => item["Tipo"]));
                 groupSuper = Object.keys(Object.groupBy(values, (item) => item["Super"]));
-
-                const buttonTable = d3.select("#defaultOpen");
               
                 histogramSvg(dados, dataFiles["base.csv"]);   
                 pieSvg(dados, "Tipo");
                 SelectpieSVG(dados);
-                
-
-                buttonTable.on("click", function () {
-                    tabulate(dados, basepaths);
-                    d3.select(this).style("background-color", "hsl(196 70 88)")
-                    .style("color", "black");
-
-                    d3.select("#apdOpen").style("background-color", "hsl(196 70 28)")
-                    .style("color", "white");
-                       
-                })                 
-
-                buttonTable.node().click();
+                buttonS522(dados, basepaths);                
 
                 }
         );
@@ -92,27 +79,17 @@ export function filtrarForm (filtros, inputs) {
 
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date());
-                const buttonTableApd = d3.select("#apdOpen"); 
-
-                localStorage.setItem(data, total);
-
-                formulario(datas, tarefas, tipos, supers); 
+                
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
-                SelectpieapdSVG(dadosApd);
+                SelectpieapdSVG(dadosApd);                
+                buttonApd(dadosApd, basepaths);
+
+                formulario(datas, tarefas, tipos, supers); 
                 estadoPlot(dados, dadosApd);
-                lineSvg(15);                
-
-                buttonTableApd.on("click", function () {
-                    tabulateApd(dadosApd, basepaths);
-                    d3.select(this).style("background-color", "hsl(196 70 88)")
-                    .style("color", "black");
-
-                    d3.select("#defaultOpen").style("background-color", "hsl(196 70 28)")
-                    .style("color", "white");
-                       
-                })                 
+                lineSvg(); 
                 
+                localStorage.setItem(data, total);  
 
             }
 

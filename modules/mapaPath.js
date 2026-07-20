@@ -1,4 +1,4 @@
-export function munPath (dados, paths) {
+export function munPathDefault() {
 
     d3.select("#newpath").remove();
 
@@ -7,6 +7,12 @@ export function munPath (dados, paths) {
     
     d3.select("#uf")
     .text("_");    
+
+}
+
+export function munPath (dados, paths) {
+
+    d3.select("#newpath").remove();
 
     paths.then((path) => {
 

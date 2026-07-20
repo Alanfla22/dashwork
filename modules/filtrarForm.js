@@ -10,7 +10,7 @@ import {tabulate} from "./tablePlot.js";
 import {tabulateApd} from "./tableApdPlot.js";
 import {filtrar} from "./filtrar.js";
 import {formulario} from "./formulario.js"
-import {munPath} from "./mapaPath.js";
+import {munPath, munPathDefault} from "./mapaPath.js";
 import {buttonApd, buttonS522} from "./buttons.js";
 
 export function filtrarForm (filtros, inputs) {
@@ -89,7 +89,7 @@ export function filtrarForm (filtros, inputs) {
                 formulario(datas, tarefas, tipos, supers); 
                 estadoPlot(dados, dadosApd);
                 lineSvg();
-                munPath();
+                munPathDefault();
                 
                 localStorage.setItem(data, total);  
 

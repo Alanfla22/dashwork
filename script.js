@@ -19,15 +19,7 @@ input.addEventListener("change", () => {
         for (var filtro of formData) {
             filtros.push(filtro);
         };
-
-        d3.select("#newpath").remove();
-
-        d3.select("#mun")
-        .text("_");
         
-        d3.select("#uf")
-        .text("_");
-
         filtrarForm(filtros, inputs);
 
     });

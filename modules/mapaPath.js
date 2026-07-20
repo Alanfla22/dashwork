@@ -1,5 +1,13 @@
 export function munPath (dados, paths) {
 
+    d3.select("#newpath").remove();
+
+    d3.select("#mun")
+    .text("_");
+    
+    d3.select("#uf")
+    .text("_");    
+
     paths.then((path) => {
 
         path.forEach((d) => {
@@ -13,8 +21,6 @@ export function munPath (dados, paths) {
             var estado = uf.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
             if ((municipio.indexOf(d["NM_MUN"].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) != -1) & ((estado.indexOf(d["NM_UF"].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")) != -1) || (estado.indexOf("rio gde do norte")) != -1)) {
-
-                d3.select("#newpath").remove();
 
                 d3.select("#mapa")
                 .append("path")                

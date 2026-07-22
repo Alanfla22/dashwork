@@ -17,6 +17,8 @@ input.addEventListener("change", () => {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    input.change();
+
     const inputs = atualizarInputs(input);
     const formData = new FormData(form);
     

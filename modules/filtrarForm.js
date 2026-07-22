@@ -80,6 +80,8 @@ export function filtrarForm (filtros, inputs) {
 
                 const total = totalBase + totalBaseapd;
                 const data = d3.utcFormat("%d/%m/%Y")(new Date());
+
+                localStorage.setItem(data, total);
                 
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");
@@ -87,11 +89,9 @@ export function filtrarForm (filtros, inputs) {
                 buttonApd(dadosApd, basepaths);
 
                 formulario(datas, tarefas, tipos, supers); 
-                estadoPlot(dados, dadosApd);
-                lineSvg();
+                estadoPlot(dados, dadosApd);               
                 munPathDefault();
-                
-                localStorage.setItem(data, total);  
+                lineSvg();
 
             }
 

@@ -11,18 +11,21 @@ input.addEventListener("change", () => {
     const inputs = atualizarInputs(input);
   
     filtrarForm([], inputs);
+    
+})
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        var filtros = [];
-        for (var filtro of formData) {
-            filtros.push(filtro);
-        };
-        
-        filtrarForm(filtros, inputs);
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-    });
+    const inputs = atualizarInputs(input);
+    const formData = new FormData(form);
+    
+    var filtros = [];
+    for (var filtro of formData) {
+        filtros.push(filtro);
+    };
+    
+    filtrarForm(filtros, inputs);
 
 })
 

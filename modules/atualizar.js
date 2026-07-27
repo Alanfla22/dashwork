@@ -16,9 +16,9 @@ export function atualizarInputs (input) {
 
             var dados = [];
 
-            data.forEach((item) => {
+            data.forEach((item) => { 
                 
-                if ((item.Tarefa == "Validar Resolu��o das Ocorr�ncias de Instru��o") || (item.Tarefa == "Registrar Ocorr�ncias de Instru��o")) {
+                if ((item.Tarefa == "Validar Resolu��o das Ocorr�ncias de Instru��o") || (item.Tarefa == "Registrar Ocorr�ncias de Instru��o" || item.Tarefa == "Registrar Ocorr�ncias de Instru��o(Retorno)")) {
 
                     item.Data = item[data.columns[9]].split(" ")[0]
                     item.Tipo = item["Tipo Solicita��o"];

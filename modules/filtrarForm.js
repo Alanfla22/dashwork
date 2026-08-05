@@ -78,10 +78,11 @@ export function filtrarForm (filtros, inputs) {
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
                 const supers = new Set(groupSuper.concat(groupApdSuper)); 
 
-                const total = totalBase + totalBaseapd;
-                const data = d3.utcFormat("%d/%m/%Y")(new Date());
-
-                localStorage.setItem(data, total);
+                if (totalBase & totalBaseapd) {
+                    const data = d3.utcFormat("%d/%m/%Y")(new Date());
+                    const total = totalBase + totalBaseapd;
+                    localStorage.setItem(data, total);
+                }    
                 
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
                 pieapdSvg(dadosApd, "Tipo IC");

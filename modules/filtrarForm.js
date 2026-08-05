@@ -78,7 +78,7 @@ export function filtrarForm (filtros, inputs) {
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
                 const supers = new Set(groupSuper.concat(groupApdSuper));
 
-                const totalBa;
+                const totalBa = undefined;
 
                 if ((totalBa != undefined) & (totalBaseapd != undefined)) {
                     const data = d3.utcFormat("%d/%m/%Y")(new Date());

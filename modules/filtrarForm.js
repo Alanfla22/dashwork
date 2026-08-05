@@ -78,10 +78,12 @@ export function filtrarForm (filtros, inputs) {
                 const tipos = new Set(groupTipo.concat(groupApdTipo));
                 const supers = new Set(groupSuper.concat(groupApdSuper)); 
 
-                if ((totalBase != undefined) & (totalBaseapd != undefined)) {
+                if ((totalBa != undefined) & (totalBaseapd != undefined)) {
                     const data = d3.utcFormat("%d/%m/%Y")(new Date());
                     const total = totalBase + totalBaseapd;
                     localStorage.setItem(data, total);
+                } else {
+                    console.alert("Reinicie para atualizar o histórico.")
                 }    
                 
                 histogramApdSvg(dadosApd, dataFiles["baseapd.csv"]);
